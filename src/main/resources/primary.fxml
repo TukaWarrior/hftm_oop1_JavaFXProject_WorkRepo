@@ -44,26 +44,36 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Title" />
                         <Label text="Author" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtf_bookTitle" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtf_bookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtf_bookTitle" onAction="#editBookTitle" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtf_bookAuthor" onAction="#editBookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Pages" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtf_bookPages" onAction="#editBookPages" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Rating" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtf_bookRating" onAction="#editBookRating" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </right>
-               <left>
+               <center>
                   <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="tcol_bookTitle" prefWidth="75.0" text="Title" />
                       <TableColumn fx:id="tcol_bookAuthor" prefWidth="75.0" text="Author" />
+                        <TableColumn fx:id="tcol_bookYear" prefWidth="75.0" text="Pages" />
+                        <TableColumn prefWidth="75.0" text="Rating" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-               </left>
+               </center>
             </BorderPane>
          </content>
       </Tab>
