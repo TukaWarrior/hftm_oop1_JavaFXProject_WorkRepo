@@ -1,6 +1,8 @@
 package hftm.lucabuetzberger;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,12 +15,26 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+    // Java Stuff
     private static Scene scene;
 
     public static void main(String[] args) {
         launch();
     }
 
+    // Observable List Stuff
+    private static ObservableList<Book> bookList = FXCollections.observableArrayList();
+
+    public App() {
+		bookList.add(new Book("The Shining","Steven King", 447, 9.5));
+        bookList.add(new Book("The Lord of the Rings","J. R. R. Tolkien", 1178, 9.9));
+	}
+
+    public static ObservableList<Book> getBookList() {
+		return bookList;
+	}
+
+    // FXML Stuff
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);

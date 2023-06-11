@@ -1,13 +1,14 @@
 package hftm.lucabuetzberger;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Book {
     private SimpleStringProperty bookTitle = new SimpleStringProperty();
     private SimpleStringProperty bookAuthor = new SimpleStringProperty();
-    private SimpleIntegerProperty bookPages = new SimpleStringProperty();
-    private SimpleDoubleProperty bookRating = new SimpleStringProperty();
+    private SimpleIntegerProperty bookPages = new SimpleIntegerProperty();
+    private SimpleDoubleProperty bookRating = new SimpleDoubleProperty();
 
     public Book(String bookTitle, String bookAuthor, int bookPages, double bookRating){
         this.setBookTitle(bookTitle);
@@ -17,7 +18,7 @@ public class Book {
     }
 
     // Book Title
-    public SimpleStringProperty bookTitlePropery(){
+    public SimpleStringProperty bookTitleProperty(){
         return this.bookTitle;
     }
     public String getBookTitle(){
@@ -28,7 +29,7 @@ public class Book {
     }
 
     // Book Author
-    public SimpleStringProperty bookAuthorPropery(){
+    public SimpleStringProperty bookAuthorProperty(){
         return this.bookAuthor;
     }
     public String getBookAuthor(){
@@ -39,24 +40,24 @@ public class Book {
     }
 
     // Book Pages
-    public SimpleIntegerProperty bookPagesPropery(){
+    public SimpleIntegerProperty bookPagesProperty(){
     return this.bookPages;
     }
-    public int getBookPages(){
+    public Integer getBookPages(){
         return this.bookPages.get();
     }
-    public void setBookPages(int bookPages){
+    public void setBookPages(Integer bookPages){
         this.bookPages.set(bookPages);
     }
 
     // Book Rating
-    public SimpleDoubleProperty bookRatingPropery(){
+    public SimpleDoubleProperty bookRatingProperty(){
     return this.bookRating;
     }
-    public double getBookRating(){
+    public Double getBookRating(){
         return this.bookRating.get();
     }
-    public void setBookRating(double bookRating){
+    public void setBookRating(Double bookRating){
         this.bookRating.set(bookRating);
     }
 }

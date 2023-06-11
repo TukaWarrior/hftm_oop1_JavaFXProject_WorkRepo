@@ -62,12 +62,12 @@
                   </GridPane>
                </right>
                <center>
-                  <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="bookTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn fx:id="tcol_bookTitle" prefWidth="75.0" text="Title" />
-                      <TableColumn fx:id="tcol_bookAuthor" prefWidth="75.0" text="Author" />
-                        <TableColumn fx:id="tcol_bookYear" prefWidth="75.0" text="Pages" />
-                        <TableColumn prefWidth="75.0" text="Rating" />
+                      <TableColumn fx:id="bookTitleColumn" prefWidth="75.0" text="Title" />
+                      <TableColumn fx:id="bookAuthorColumn" prefWidth="75.0" text="Author" />
+                        <TableColumn fx:id="bookPagesColumn" prefWidth="75.0" text="Pages" />
+                        <TableColumn fx:id="bookRatingColumn" prefWidth="75.0" text="Rating" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
