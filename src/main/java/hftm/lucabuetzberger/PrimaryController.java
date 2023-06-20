@@ -3,6 +3,7 @@ package hftm.lucabuetzberger;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class PrimaryController {
     @FXML
     private TableColumn<Book, Integer> bookPagesColumn;
     @FXML
-    private TableColumn<Book, Double> bookRatingColumn;
+    private TableColumn<Book, Integer> bookRatingColumn;
     @FXML
     private TextField txtf_bookTitle;
     @FXML
@@ -31,6 +32,8 @@ public class PrimaryController {
     private TextField txtf_bookPages;
     @FXML
     private TextField txtf_bookRating;
+    @FXML
+    private Button newBook;
 
     @FXML
     public void initialize(){
@@ -75,10 +78,28 @@ public class PrimaryController {
     @FXML
     private void editBookRating(){
     }
+    @FXML
+    private void newBook() {
+//        Book Book = new Book("Hello", "It' me", 420, 6.9);
+//        App.getBookList().add(Book);
+        App.switchToNewBookView();
+    }
+
+
+//    @FXML
+//    public void onEdit() {
+//        Prisoner selectedPrisoner = prisonerTable.getSelectionModel().getSelectedItem();
+//        if (selectedPrisoner != null) {
+//            App.switchToEditView(selectedPrisoner);
+//            this.showPrisonerDetails(selectedPrisoner);
+//        } else {
+//            // Nothing selected.
+//            System.out.println("Nothing happened!");
+//        }
 
 
     @FXML
     private void switchToSecondary() throws IOException {
-        App.setSceneRoot("secondary");
+        App.switchToSecondary();
     }
 }

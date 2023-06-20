@@ -1,6 +1,5 @@
 package hftm.lucabuetzberger;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -8,9 +7,13 @@ public class Book {
     private SimpleStringProperty bookTitle = new SimpleStringProperty();
     private SimpleStringProperty bookAuthor = new SimpleStringProperty();
     private SimpleIntegerProperty bookPages = new SimpleIntegerProperty();
-    private SimpleDoubleProperty bookRating = new SimpleDoubleProperty();
+    private SimpleIntegerProperty bookRating = new SimpleIntegerProperty();
 
-    public Book(String bookTitle, String bookAuthor, int bookPages, double bookRating){
+    //Constructor
+    public Book(){
+    }
+
+    public Book(String bookTitle, String bookAuthor, int bookPages, int bookRating){
         this.setBookTitle(bookTitle);
         this.setBookAuthor(bookAuthor);
         this.setBookPages(bookPages);
@@ -51,13 +54,13 @@ public class Book {
     }
 
     // Book Rating
-    public SimpleDoubleProperty bookRatingProperty(){
+    public SimpleIntegerProperty bookRatingProperty(){
     return this.bookRating;
     }
-    public Double getBookRating(){
+    public Integer getBookRating(){
         return this.bookRating.get();
     }
-    public void setBookRating(Double bookRating){
+    public void setBookRating(Integer bookRating){
         this.bookRating.set(bookRating);
     }
 }
