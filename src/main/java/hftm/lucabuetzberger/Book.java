@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 public class Book {
     private SimpleStringProperty bookTitle = new SimpleStringProperty();
     private SimpleStringProperty bookAuthor = new SimpleStringProperty();
+    private SimpleIntegerProperty bookReleaseYear = new SimpleIntegerProperty();
+    private SimpleStringProperty bookGenre = new SimpleStringProperty();
     private SimpleIntegerProperty bookPages = new SimpleIntegerProperty();
     private SimpleIntegerProperty bookRating = new SimpleIntegerProperty();
 
@@ -20,7 +22,7 @@ public class Book {
         this.setBookRating(bookRating);
     }
 
-    // Book Title
+    //Book Title
     public SimpleStringProperty bookTitleProperty(){
         return this.bookTitle;
     }
@@ -31,7 +33,7 @@ public class Book {
         this.bookTitle.set(bookTitle);
     }
 
-    // Book Author
+    //Book Author
     public SimpleStringProperty bookAuthorProperty(){
         return this.bookAuthor;
     }
@@ -42,7 +44,29 @@ public class Book {
         this.bookAuthor.set(bookAuthor);
     }
 
-    // Book Pages
+    //Book Release Year
+    public SimpleIntegerProperty bookReleaseYearProperty(){
+        return this.bookReleaseYear;
+    }
+    public Integer getBookReleaseYear(){
+        return this.bookReleaseYear.get();
+    }
+    public void setBookReleaseYear(Integer bookReleaseYear){
+        this.bookReleaseYear.set(bookReleaseYear);
+    }
+
+    //Book Genre
+    public SimpleStringProperty bookGenreProperty(){
+        return this.bookGenre;
+    }
+    public String getBookGenre(){
+        return this.bookGenre.get();
+    }
+    public void setBookGenre(String bookGenre){
+        this.bookGenre.set(bookGenre);
+    }
+
+    //Book Pages
     public SimpleIntegerProperty bookPagesProperty(){
     return this.bookPages;
     }
@@ -53,7 +77,7 @@ public class Book {
         this.bookPages.set(bookPages);
     }
 
-    // Book Rating
+    //Book Rating
     public SimpleIntegerProperty bookRatingProperty(){
     return this.bookRating;
     }

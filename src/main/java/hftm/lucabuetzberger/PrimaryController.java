@@ -21,6 +21,10 @@ public class PrimaryController {
     @FXML
     private TableColumn<Book, String> bookAuthorColumn;
     @FXML
+    private TableColumn<Book, Integer> bookReleaseYearColumn;
+    @FXML
+    private TableColumn<Book, String> bookGenreColumn;
+    @FXML
     private TableColumn<Book, Integer> bookPagesColumn;
     @FXML
     private TableColumn<Book, Integer> bookRatingColumn;
@@ -40,12 +44,13 @@ public class PrimaryController {
         // Initializes the book table with the columns
         this.bookTitleColumn.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         this.bookAuthorColumn.setCellValueFactory(cellData -> cellData.getValue().bookAuthorProperty());
+        this.bookReleaseYearColumn.setCellValueFactory(cellData -> cellData.getValue().bookReleaseYearProperty().asObject());
+        this.bookGenreColumn.setCellValueFactory(cellData -> cellData.getValue().bookGenreProperty());
         this.bookPagesColumn.setCellValueFactory(cellData -> cellData.getValue().bookPagesProperty().asObject());
         this.bookRatingColumn.setCellValueFactory(cellData -> cellData.getValue().bookRatingProperty().asObject());
 
         this.bookTable.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> this.showBookDetails(newValue));
-
         this.bookTable.setItems(App.getBookList());
     }
 
