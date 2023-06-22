@@ -13,7 +13,7 @@ import javafx.scene.control.TableView;
 
 public class PrimaryController {
     
-    // Fields
+    //Fields Books
     @FXML
     private TableView<Book> bookTable;
     @FXML
@@ -37,11 +37,33 @@ public class PrimaryController {
     @FXML
     private TextField txtf_bookRating;
     @FXML
+    private TextField txtf_bookReleaseYear;
+    @FXML
     private Button newBook;
+    @FXML
+    private Button editBook;
+
+    //Fields Movie
+    @FXML
+    private TableView<Movie> movieTable;
+    @FXML
+    private TableColumn<Movie, String> movieTitleColumn;
+    @FXML
+    private TableColumn<Movie, String> movieDirectorColumn;
+    @FXML
+    private TableColumn<Movie, Integer> movieReleaseYearColumn;
+    @FXML
+    private TableColumn<Movie, String> movieGenreColumn;
+    @FXML
+    private TableColumn<Movie, Integer> movieLengthColumn;
+    @FXML
+    private TableColumn<Movie, Integer> movieRatingColumn;
+
+
 
     @FXML
     public void initialize(){
-        // Initializes the book table with the columns
+        // Initializes the book table and columns
         this.bookTitleColumn.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         this.bookAuthorColumn.setCellValueFactory(cellData -> cellData.getValue().bookAuthorProperty());
         this.bookReleaseYearColumn.setCellValueFactory(cellData -> cellData.getValue().bookReleaseYearProperty().asObject());
@@ -52,42 +74,62 @@ public class PrimaryController {
         this.bookTable.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> this.showBookDetails(newValue));
         this.bookTable.setItems(App.getBookList());
+
+        // Initializes the movie table and columns
+        this.movieTitleColumn.setCellValueFactory(cellData -> cellData.getValue().movieTitleProperty());
+        this.movieDirectorColumn.setCellValueFactory(cellData -> cellData.getValue().movieDirectorProperty());
+        this.movieReleaseYearColumn.setCellValueFactory(cellData -> cellData.getValue().movieReleaseYearProperty().asObject());
+        this.movieGenreColumn.setCellValueFactory(cellData -> cellData.getValue().movieGenreProperty());
+        this.movieLengthColumn.setCellValueFactory(cellData -> cellData.getValue().movieLengthProperty().asObject());
+        this.movieRatingColumn.setCellValueFactory(cellData -> cellData.getValue().movieRatingProperty().asObject());
+
+//        this.movieTable.getSelectionModel().selectedItemProperty()
+//                .addListener((observable, oldValue, newValue) -> this.showMovieDetails(newValue));
+        this.movieTable.setItems(App.getMovieList());
+
+        // Listener for bookEdit button
+        bookTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // Book is selected, enable the editBook button
+                editBook.setDisable(false);
+            } else {
+                // No book is selected, disable the editBook button
+                editBook.setDisable(true);
+            }
+        });
     }
 
-    // Methods
+    //Book Methods
     private void showBookDetails(Book book) {
         if (book != null) {
-            // Fill the labels with info from the prisoner object.
+            // Fill the labels with info from the book object.
             this.txtf_bookTitle.setText(book.getBookTitle());
             this.txtf_bookAuthor.setText(book.getBookAuthor());
+            this.txtf_bookReleaseYear.setText(String.valueOf(book.getBookReleaseYear()));
             this.txtf_bookPages.setText(String.valueOf(book.getBookPages()));
             this.txtf_bookRating.setText(String.valueOf(book.getBookRating()));
         } else {
-            // Prisoner is null, remove all the text.
+            // book is null, remove all the text.
             txtf_bookTitle.setText("");
             txtf_bookAuthor.setText("");
             txtf_bookPages.setText("");
             txtf_bookRating.setText("");
         }
     }
-
-    @FXML
-    private void editBookTitle(){
-    }
-    @FXML
-    private void editBookAuthor(){
-    }
-    @FXML
-    private void editBookPages(){
-    }
-    @FXML
-    private void editBookRating(){
-    }
+//    Book Buttons
     @FXML
     private void newBook() {
-//        Book Book = new Book("Hello", "It' me", 420, 6.9);
-//        App.getBookList().add(Book);
         App.switchToNewBookView();
+    }
+    @FXML
+    private void editBook() {
+        Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
+        if (selectedBook != null){
+            App.switchToBookEditView(selectedBook);
+            this.showBookDetails(selectedBook);
+        } else {
+            System.out.println("No book selected");
+        }
     }
 
 

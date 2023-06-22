@@ -41,7 +41,7 @@
                           </rowConstraints>
                            <children>
                               <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Button fx:id="editBook" disable="true" mnemonicParsing="false" onAction="#editBook" prefHeight="25.0" prefWidth="101.0" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Button fx:id="newBook" mnemonicParsing="false" onAction="#newBook" prefHeight="25.0" prefWidth="122.0" text="New" GridPane.columnIndex="4" />
                            </children>
                         </GridPane>
@@ -69,12 +69,13 @@
                      <children>
                         <Label text="Title" />
                         <Label text="Author" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtf_bookTitle" onAction="#editBookTitle" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtf_bookAuthor" onAction="#editBookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtf_bookTitle" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtf_bookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Pages" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtf_bookPages" onAction="#editBookPages" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtf_bookPages" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Rating" GridPane.rowIndex="3" />
-                        <TextField fx:id="txtf_bookRating" onAction="#editBookRating" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtf_bookRating" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtf_bookReleaseYear" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </right>
@@ -97,16 +98,29 @@
          </content>
       </Tab>
       <Tab closable="false" text="🎬 Movies">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <TableView fx:id="movieTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn fx:id="movieTitleColumn" prefWidth="75.0" text="Title" />
+                      <TableColumn fx:id="movieDirectorColumn" prefWidth="75.0" text="Director" />
+                        <TableColumn fx:id="movieReleaseYearColumn" prefWidth="75.0" text="Release Year" />
+                        <TableColumn fx:id="movieGenreColumn" prefWidth="75.0" text="Genre" />
+                        <TableColumn fx:id="movieLengthColumn" prefWidth="75.0" text="Length" />
+                        <TableColumn fx:id="movieRatingColumn" prefWidth="75.0" text="Rating" />
+                    </columns>
+                  </TableView>
+               </center>
+            </BorderPane>
+         </content>
       </Tab>
       <Tab closable="false" text="🎮 Games">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
       </Tab>
-      <Tab text="📽 TV Series">
+      <Tab closable="false" text="📽 TV Series">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>

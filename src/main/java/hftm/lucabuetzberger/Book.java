@@ -14,10 +14,11 @@ public class Book {
     //Constructor
     public Book(){
     }
-
-    public Book(String bookTitle, String bookAuthor, int bookPages, int bookRating){
+    public Book(String bookTitle, String bookAuthor, int bookReleaseYear, String bookGenre, int bookPages, int bookRating){
         this.setBookTitle(bookTitle);
         this.setBookAuthor(bookAuthor);
+        this.setBookReleaseYear(bookReleaseYear);
+        this.setBookGenre(bookGenre);
         this.setBookPages(bookPages);
         this.setBookRating(bookRating);
     }

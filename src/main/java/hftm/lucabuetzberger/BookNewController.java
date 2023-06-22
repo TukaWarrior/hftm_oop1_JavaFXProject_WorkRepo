@@ -1,7 +1,6 @@
 package hftm.lucabuetzberger;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import java.time.Year;
 
@@ -10,58 +9,52 @@ public class BookNewController {
 //Fields
     private Book book;
     @FXML
-    private TextField txtf_newBookTitle;
+    private TextField txtf_bookTitle;
     @FXML
-    private TextField txtf_newBookAuthor;
+    private TextField txtf_bookAuthor;
     @FXML
-    private TextField txtf_newBookReleaseYear;
+    private TextField txtf_bookReleaseYear;
     @FXML
-    private TextField txtf_newBookGenre;
+    private TextField txtf_bookGenre;
     @FXML
-    private TextField txtf_newBookPages;
+    private TextField txtf_bookPages;
     @FXML
-    private TextField txtf_newBookRating;
-    @FXML
-    private Button onSave;
-    @FXML
-    private Button onCancel;
-
+    private TextField txtf_bookRating;
 
     @FXML
-
     private void initialize() {
         // Checks if any letters are entered and replaces them
-        txtf_newBookPages.textProperty().addListener((observable, oldValue, newValue) -> {
+        txtf_bookPages.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                txtf_newBookPages.setText(newValue.replaceAll("[^\\d]", ""));
+                txtf_bookPages.setText(newValue.replaceAll("[^\\d]", ""));
             } else if (!newValue.isEmpty()) {
                 int rating = Integer.parseInt(newValue);
                 if (rating < 1 || rating > 1000000) {
-                    txtf_newBookPages.setText(oldValue);
+                    txtf_bookPages.setText(oldValue);
                 }
             }
         });
 
         // Checks if any letters are entered and replaces them
-        txtf_newBookReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
+        txtf_bookReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                txtf_newBookReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
+                txtf_bookReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
             } else if (!newValue.isEmpty()) {
                 int rating = Integer.parseInt(newValue);
                 if (rating < 0 || rating > Year.now().getValue()) {
-                    txtf_newBookReleaseYear.setText(oldValue);
+                    txtf_bookReleaseYear.setText(oldValue);
                 }
             }
         });
 
         // Checks if any letters are entered and replaces them
-        txtf_newBookRating.textProperty().addListener((observable, oldValue, newValue) -> {
+        txtf_bookRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                txtf_newBookRating.setText(newValue.replaceAll("[^\\d]", ""));
+                txtf_bookRating.setText(newValue.replaceAll("[^\\d]", ""));
             } else if (!newValue.isEmpty()) {
                 int rating = Integer.parseInt(newValue);
                 if (rating < 1 || rating > 100) {
-                    txtf_newBookRating.setText(oldValue);
+                    txtf_bookRating.setText(oldValue);
                 }
             }
         });
@@ -70,12 +63,12 @@ public class BookNewController {
     @FXML
     private void onSave() {
         this.book = new Book();
-        String title = txtf_newBookTitle.getText();
-        String author = txtf_newBookAuthor.getText();
-        String releaseYear = txtf_newBookReleaseYear.getText();
-        String genre = txtf_newBookGenre.getText();
-        String pages = txtf_newBookPages.getText();
-        String rating = txtf_newBookRating.getText();
+        String title = txtf_bookTitle.getText();
+        String author = txtf_bookAuthor.getText();
+        String releaseYear = txtf_bookReleaseYear.getText();
+        String genre = txtf_bookGenre.getText();
+        String pages = txtf_bookPages.getText();
+        String rating = txtf_bookRating.getText();
 
         if (!title.isEmpty()){
             this.book.setBookTitle(title);

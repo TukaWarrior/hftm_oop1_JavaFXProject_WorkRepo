@@ -14,6 +14,14 @@ public class Movie {
     //Constructor
     public Movie(){
     }
+    public Movie(String movieTitle, String movieDirector, int movieReleaseYear, String movieGenre, int movieLength, int movieRating) {
+        this.setMovieTitle(movieTitle);
+        this.setMovieDirector(movieDirector);
+        this.setMovieReleaseYear(movieReleaseYear);
+        this.setMovieGenre(movieGenre);
+        this.setMovieLength(movieLength);
+        this.setMovieRating(movieRating);
+    }
 
     //Movie Title
     public SimpleStringProperty movieTitleProperty(){
@@ -58,7 +66,6 @@ public class Movie {
     public void setMovieGenre(String movieGenre){
         this.movieGenre.set(movieGenre);
     }
-
 
     //Movie Length
     public SimpleIntegerProperty movieLengthProperty(){

@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BookEditController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hftm.lucabuetzberger.BookEditController">
    <children>
       <GridPane layoutX="200.0" layoutY="155.0">
         <columnConstraints>
@@ -17,6 +16,8 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,14 +28,18 @@
          <children>
             <Label text="Title" />
             <Label text="Author" GridPane.rowIndex="1" />
-            <Label text="Pages" GridPane.rowIndex="2" />
-            <Label text="Rating" GridPane.rowIndex="3" />
-            <TextField fx:id="txtf_bookTitle2" onAction="#editBookTitle" promptText="Enter book title" GridPane.columnIndex="1" />
-            <TextField fx:id="txtf_bookAuthor2" onAction="#editBookAuthor" promptText="Enter authors name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtf_bookPages2" onAction="#editBookPages" promptText="Enter number of pages" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtf_bookRating2" onAction="#editBookRating" promptText="Enter personal rating" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="onCancel" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="onSave" mnemonicParsing="false" text="Save" GridPane.rowIndex="4" />
+            <Label text="Pages" GridPane.rowIndex="4" />
+            <Label text="Rating" GridPane.rowIndex="5" />
+            <TextField fx:id="txtf_bookTitle" promptText="Enter book title" GridPane.columnIndex="1" />
+            <TextField fx:id="txtf_bookAuthor" promptText="Enter authors name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtf_bookPages" promptText="Enter number of pages" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtf_bookRating" promptText="Enter personal rating" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="onCancel" mnemonicParsing="false" onAction="#onCancel" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button fx:id="onSave" mnemonicParsing="false" onAction="#onSave" text="Save" GridPane.rowIndex="6" />
+            <Label text="Release Year" GridPane.rowIndex="2" />
+            <Label text="Genre" GridPane.rowIndex="3" />
+            <TextField fx:id="txtf_bookReleaseYear" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtf_bookGenre" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

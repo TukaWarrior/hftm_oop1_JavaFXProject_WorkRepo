@@ -18,17 +18,22 @@ public class App extends Application {
     public static ObservableList<Book> getBookList() {
         return bookList;
     }
+    private static ObservableList<Movie> movieList = FXCollections.observableArrayList();
+    public static ObservableList<Movie> getMovieList() {
+        return movieList;
+    }
 
 //Testing
     public App() {
-        bookList.add(new Book("The Shining","Steven King", 447, 95));
-        bookList.add(new Book("The Lord of the Rings","J. R. R. Tolkien", 1178, 99));
+        bookList.add(new Book("The Shining", "Steven King", 1998, "Horror", 447, 95));
+        movieList.add(new Movie("The Lord of the Rings", "J. R. R. Tolkien", 2001, "Fantasy", 1178, 99));
     }
 
 //Main Method
     public static void main(String[] args) {
         launch();
     }
+
 //FXML Initialize Scene
     private static Scene scene;
 
@@ -37,7 +42,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
         App.scene = new Scene(loadFXML(fxmlLoader), 640, 480);
-        stage.setTitle("Medienverwaltung");
+        stage.setTitle("I have no life");
         stage.setScene(scene);
         stage.show();
     }
@@ -47,11 +52,12 @@ public class App extends Application {
         FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
     }
-    public static void switchToBookEditView() {
+    public static void switchToBookEditView(Book selectedBook) {
         FXMLLoader fxmlLoader = createFXMLLoader("BookEditView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
-//        BookEditController controller = fxmlLoader.getController();
-//        controller.setBook(selectedBook);
+
+        BookEditController controller = fxmlLoader.getController();
+        controller.setBook(selectedBook);
 
     }
 
@@ -66,10 +72,9 @@ public class App extends Application {
     }
 
     public static void switchToNewBookView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("NewBookView.fxml");
+        FXMLLoader fxmlLoader = createFXMLLoader("BookNewView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
     }
-
 
 //FXML Loader
     private static FXMLLoader createFXMLLoader(String fxml)  {
@@ -85,6 +90,7 @@ public class App extends Application {
             return null;
         }
     }
+
 //Old COde
 //    private static Parent loadFXML(String fxml) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
@@ -94,8 +100,4 @@ public class App extends Application {
 //    static void setSceneRoot(String fxml) throws IOException {
 //        scene.setRoot(loadFXML(fxml));
 //    }
-
-    public void addtoBooklist(){
-        bookList.add(new Book("Test","IT's me", 420, 61));
-    }
 }
