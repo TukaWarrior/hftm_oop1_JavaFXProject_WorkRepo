@@ -16,7 +16,7 @@ public class Game {
     public Game(){
     }
 
-    public Game(String bookTitle, String bookAuthor, int bookPages, int bookRating) {
+    public Game(String gameTitle, String gameDeveloper, int gameReleaseYear, String gameGenre, int gamePlaytime, int gameRating) {
         this.setGameTitle(gameTitle);
         this.setGameDeveloper(gameDeveloper);
         this.setGameReleaseYear(gameReleaseYear);

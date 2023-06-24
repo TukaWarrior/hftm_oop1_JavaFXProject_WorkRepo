@@ -15,7 +15,7 @@ public class TVShow {
     public TVShow(){
     }
 
-    public TVShow(String bookTitle, String bookAuthor, int bookPages, int bookRating){
+    public TVShow(String tvShowTitle, String tvShowDirector, int tvShowReleaseYear, String tvShowGenre, int tvShowEpisodes, int tvShowRating){
         this.setTVShowTitle(tvShowTitle);
         this.setTVShowDirector(tvShowDirector);
         this.setTVShowReleaseYear(tvShowReleaseYear);
