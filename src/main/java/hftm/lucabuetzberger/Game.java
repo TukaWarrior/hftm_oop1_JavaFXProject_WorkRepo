@@ -8,8 +8,9 @@ public class Game {
     private SimpleStringProperty gameDeveloper = new SimpleStringProperty();
     private SimpleIntegerProperty gameReleaseYear = new SimpleIntegerProperty();
     private SimpleStringProperty gameGenre = new SimpleStringProperty();
-    private SimpleIntegerProperty gameRating = new SimpleIntegerProperty();
     private SimpleIntegerProperty gamePlaytime = new SimpleIntegerProperty();
+    private SimpleIntegerProperty gameRating = new SimpleIntegerProperty();
+
 
 
     //Constructor
@@ -90,5 +91,4 @@ public class Game {
     public void setGameRating(Integer gameRating){
         this.gameRating.set(gameRating);
     }
-
 }

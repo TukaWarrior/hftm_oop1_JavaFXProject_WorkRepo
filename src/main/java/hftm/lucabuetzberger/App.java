@@ -22,11 +22,32 @@ public class App extends Application {
     public static ObservableList<Movie> getMovieList() {
         return movieList;
     }
+    private static ObservableList<Game> gameList = FXCollections.observableArrayList();
+    public static ObservableList<Game> getGameList() {
+        return gameList;
+    }
+    private static ObservableList<TVShow> tvshowList = FXCollections.observableArrayList();
+    public static ObservableList<TVShow> getTVShowList() {
+        return tvshowList;
+    }
 
 //Testing
     public App() {
-        bookList.add(new Book("The Shining", "Steven King", 1998, "Horror", 447, 95));
-        movieList.add(new Movie("The Lord of the Rings", "J. R. R. Tolkien", 2001, "Fantasy", 1178, 99));
+        bookList.add(new Book("The Shining", "Steven King", 1998, "Horror", 447, 86));
+        bookList.add(new Book("To Kill a Mockingbird", "Harper Lee", 1960, "Roman", 281, 95));
+        bookList.add(new Book("1984", "George Orwell", 1949, "Dystopisch", 328, 92));
+
+        movieList.add(new Movie("The Lord of the Rings: The Fellowship of the Ring", "J. R. R. Tolkien", 2001, "Fantasy", 178, 92));
+        movieList.add(new Movie("Back to the Future", "Robert Zemeckis", 1985, "Sci-Fi", 116, 87));
+        movieList.add(new Movie("Forrest Gump", "Robert Zemeckis", 1994, "Drama", 142, 88));
+
+        gameList.add(new Game("The Legend of Zelda: Ocarina of Time", "Nintendo EAD", 1998, "Action-Adventure", 39, 99));
+        gameList.add(new Game("Metroid Prime", "Retro Studios", 2002, "Metroidvania", 17, 97));
+        gameList.add(new Game("Outer Wilds", "Mobius Digital", 2019, "Exploration", 26, 100));
+
+        tvshowList.add(new TVShow("The Expanse", "Mark Fergus", 2016, "Sci-Fi", 10, 85));
+        tvshowList.add(new TVShow("The Boys", "Eric Kripk", 2016, "Superhero", 24, 87));
+        tvshowList.add(new TVShow("Final Space", "Olan Rogers", 2018, "Comedy", 36, 95));
     }
 
 //Main Method
@@ -71,6 +92,30 @@ public class App extends Application {
         controller.setBook(selectedBook);
     }
 
+    public static void switchToNewGameView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("GameNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+
+    public static void switchToGameEditView(Game selectedGame) {
+        FXMLLoader fxmlLoader = createFXMLLoader("GameEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        GameEditController controller = fxmlLoader.getController();
+        controller.setGame(selectedGame);
+    }
+
+    public static void switchToNewTVShowView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("TVShowNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+
+    public static void switchToTVShowEditView(TVShow selectedTVShow) {
+        FXMLLoader fxmlLoader = createFXMLLoader("TVShowEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        TVShowEditController controller = fxmlLoader.getController();
+        controller.setTVShow(selectedTVShow);
+    }
+
     public static void switchToNewMovieView(){
         FXMLLoader fxmlLoader = createFXMLLoader("MovieNewView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
@@ -97,14 +142,4 @@ public class App extends Application {
             return null;
         }
     }
-
-//Old COde
-//    private static Parent loadFXML(String fxml) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/" + fxml + ".fxml"));
-//        return fxmlLoader.load();
-//    }
-
-//    static void setSceneRoot(String fxml) throws IOException {
-//        scene.setRoot(loadFXML(fxml));
-//    }
 }

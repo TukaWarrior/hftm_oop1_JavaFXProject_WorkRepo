@@ -64,10 +64,53 @@ public class PrimaryController {
     @FXML
     private Button deleteMovie;
 
+    //Fields Game
+    @FXML
+    private TableView<Game> gameTable;
+    @FXML
+    private TableColumn<Game, String> gameTitleColumn;
+    @FXML
+    private TableColumn<Game, String> gameDeveloperColumn;
+    @FXML
+    private TableColumn<Game, Integer> gameReleaseYearColumn;
+    @FXML
+    private TableColumn<Game, String> gameGenreColumn;
+    @FXML
+    private TableColumn<Game, Integer> gamePlaytimeColumn;
+    @FXML
+    private TableColumn<Game, Integer> gameRatingColumn;
+    @FXML
+    private Button newGame;
+    @FXML
+    private Button editGame;
+    @FXML
+    private Button deleteGame;
 
+    //Fields TVShow
+    @FXML
+    private TableView<TVShow> tvshowTable;
+    @FXML
+    private TableColumn<TVShow, String> tvshowTitleColumn;
+    @FXML
+    private TableColumn<TVShow, String> tvshowDirectorColumn;
+    @FXML
+    private TableColumn<TVShow, Integer> tvshowReleaseYearColumn;
+    @FXML
+    private TableColumn<TVShow, String> tvshowGenreColumn;
+    @FXML
+    private TableColumn<TVShow, Integer> tvshowEpisodesColumn;
+    @FXML
+    private TableColumn<TVShow, Integer> tvshowRatingColumn;
+    @FXML
+    private Button newTVShow;
+    @FXML
+    private Button editTVShow;
+    @FXML
+    private Button deleteTVShow;
 
     @FXML
     public void initialize(){
+
         // Initializes the book table and columns
         this.bookTitleColumn.setCellValueFactory(cellData -> cellData.getValue().bookTitleProperty());
         this.bookAuthorColumn.setCellValueFactory(cellData -> cellData.getValue().bookAuthorProperty());
@@ -89,8 +132,32 @@ public class PrimaryController {
         this.movieRatingColumn.setCellValueFactory(cellData -> cellData.getValue().movieRatingProperty().asObject());
 
 //        this.movieTable.getSelectionModel().selectedItemProperty()
-//                .addListener((observable, oldValue, newValue) -> this.showMovieDetails(newValue));
+//                .addListener((observable, oldValue, newValue) -> this.getMovieDetails(newValue));
         this.movieTable.setItems(App.getMovieList());
+
+        // Initializes the game table and columns
+        this.gameTitleColumn.setCellValueFactory(cellData -> cellData.getValue().gameTitleProperty());
+        this.gameDeveloperColumn.setCellValueFactory(cellData -> cellData.getValue().gameDeveloperProperty());
+        this.gameReleaseYearColumn.setCellValueFactory(cellData -> cellData.getValue().gameReleaseYearProperty().asObject());
+        this.gameGenreColumn.setCellValueFactory(cellData -> cellData.getValue().gameGenreProperty());
+        this.gamePlaytimeColumn.setCellValueFactory(cellData -> cellData.getValue().gamePlaytimeProperty().asObject());
+        this.gameRatingColumn.setCellValueFactory(cellData -> cellData.getValue().gameRatingProperty().asObject());
+
+//        this.movieTable.getSelectionModel().selectedItemProperty()
+//                .addListener((observable, oldValue, newValue) -> this.getGameDetails(newValue));
+        this.gameTable.setItems(App.getGameList());
+
+        // Initializes the tvshow table and columns
+        this.tvshowTitleColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowTitleProperty());
+        this.tvshowDirectorColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowDirectorProperty());
+        this.tvshowReleaseYearColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowReleaseYearProperty().asObject());
+        this.tvshowGenreColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowGenreProperty());
+        this.tvshowEpisodesColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowEpisodesProperty().asObject());
+        this.tvshowRatingColumn.setCellValueFactory(cellData -> cellData.getValue().tvshowRatingProperty().asObject());
+
+//        this.movieTable.getSelectionModel().selectedItemProperty()
+//                .addListener((observable, oldValue, newValue) -> this.showTVShowDetails(newValue));
+        this.tvshowTable.setItems(App.getTVShowList());
 
         // Listener for bookEdit button
         bookTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -122,11 +189,12 @@ public class PrimaryController {
         }
     }
 
-//    Book Buttons
+//Book Buttons
     @FXML
     private void newBook() {
         App.switchToNewBookView();
     }
+
     @FXML
     private void editBook() {
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
@@ -137,6 +205,7 @@ public class PrimaryController {
             System.out.println("No book selected");
         }
     }
+
     @FXML
     private void deleteBook(){
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
@@ -152,10 +221,12 @@ public class PrimaryController {
         }
     }
 
+//Movie Buttons
     @FXML
     private void newMovie(){
         App.switchToNewMovieView();
     }
+
     @FXML
     private void editMovie(){
         Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
@@ -180,6 +251,69 @@ public class PrimaryController {
         } else{
         }
     }
+
+//    Game Buttons
+    @FXML
+    private void newGame(){
+        App.switchToNewGameView();
+    }
+
+    @FXML
+    private void editGame(){
+        Game selectedGame = gameTable.getSelectionModel().getSelectedItem();
+        if (selectedGame != null){
+            App.switchToGameEditView(selectedGame);
+        } else {
+            System.out.println("No game selected");
+        }
+    }
+
+    @FXML
+    private void deleteGame(){
+        Game selectedGame = gameTable.getSelectionModel().getSelectedItem();
+        if (selectedGame != null){
+            ObservableList<Game> gameList = App.getGameList();
+            gameTable.getItems().remove(selectedGame);
+            gameList.remove(selectedGame);
+            System.out.println("Games in gameList:");
+            for (Game game : gameList) {
+                System.out.println(game.getGameTitle()); // Print book title
+            }
+        } else{
+        }
+    }
+
+//    TVShow Buttons
+    @FXML
+    private void newTVShow(){
+        App.switchToNewTVShowView();
+    }
+
+    @FXML
+    private void editTVShow(){
+        TVShow selectedTVShow = tvshowTable.getSelectionModel().getSelectedItem();
+        if (selectedTVShow != null){
+            App.switchToTVShowEditView(selectedTVShow);
+        } else {
+            System.out.println("No tvshow selected");
+        }
+    }
+
+    @FXML
+    private void deleteTVShow(){
+        TVShow selectedTVShow = tvshowTable.getSelectionModel().getSelectedItem();
+        if (selectedTVShow != null){
+            ObservableList<TVShow> tvshowList = App.getTVShowList();
+            tvshowTable.getItems().remove(selectedTVShow);
+            tvshowList.remove(selectedTVShow);
+            System.out.println("TVShows in tvshowList:");
+            for (TVShow tvshow : tvshowList) {
+                System.out.println(tvshow.getTVShowTitle()); // Print book title
+            }
+        } else{
+        }
+    }
+
     @FXML
     private void switchToSecondary() throws IOException {
         App.switchToSecondaryView();

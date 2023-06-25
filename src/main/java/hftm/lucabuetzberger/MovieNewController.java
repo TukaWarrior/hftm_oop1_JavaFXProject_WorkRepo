@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import java.time.Year;
 
+
 public class MovieNewController {
 
     //Fields
@@ -64,26 +65,26 @@ public class MovieNewController {
     private void onSave() {
         this.movie = new Movie();
         String title = txtf_movieTitle.getText();
-        String author = txtf_movieDirector.getText();
+        String director = txtf_movieDirector.getText();
         String releaseYear = txtf_movieReleaseYear.getText();
         String genre = txtf_movieGenre.getText();
-        String pages = txtf_movieLength.getText();
+        String length = txtf_movieLength.getText();
         String rating = txtf_movieRating.getText();
 
         if (!title.isEmpty()){
             this.movie.setMovieTitle(title);
         }
-        if (!author.isEmpty()){
-            this.movie.setMovieDirector(author);
+        if (!director.isEmpty()){
+            this.movie.setMovieDirector(director);
         }
         if (!releaseYear.isEmpty()){
             this.movie.setMovieReleaseYear(Integer.parseInt(releaseYear));
         }
-        if (!author.isEmpty()){
+        if (!director.isEmpty()){
             this.movie.setMovieGenre(genre);
         }
-        if (!pages.isEmpty()){
-            this.movie.setMovieLength(Integer.parseInt(pages));
+        if (!length.isEmpty()){
+            this.movie.setMovieLength(Integer.parseInt(length));
         }
         if (!rating.isEmpty()){
             this.movie.setMovieRating(Integer.parseInt(rating));
