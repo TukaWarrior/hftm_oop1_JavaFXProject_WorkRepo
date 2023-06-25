@@ -48,25 +48,13 @@ public class App extends Application {
     }
 
 //FXML Scene Change
-    public static void switchToMainView() {
-        FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-    public static void switchToBookEditView(Book selectedBook) {
-        FXMLLoader fxmlLoader = createFXMLLoader("BookEditView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
 
-        BookEditController controller = fxmlLoader.getController();
-        controller.setBook(selectedBook);
-
-    }
-
-    public static void switchToPrimary(){
+    public static void switchToPrimaryView(){
         FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
     }
 
-    public static void switchToSecondary(){
+    public static void switchToSecondaryView(){
         FXMLLoader fxmlLoader = createFXMLLoader("SecondaryView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
     }
@@ -74,6 +62,25 @@ public class App extends Application {
     public static void switchToNewBookView(){
         FXMLLoader fxmlLoader = createFXMLLoader("BookNewView.fxml");
         App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+
+    public static void switchToBookEditView(Book selectedBook) {
+        FXMLLoader fxmlLoader = createFXMLLoader("BookEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        BookEditController controller = fxmlLoader.getController();
+        controller.setBook(selectedBook);
+    }
+
+    public static void switchToNewMovieView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("MovieNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+
+    public static void switchToMovieEditView(Movie selectedMovie) {
+        FXMLLoader fxmlLoader = createFXMLLoader("MovieEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        MovieEditController controller = fxmlLoader.getController();
+        controller.setMovie(selectedMovie);
     }
 
 //FXML Loader

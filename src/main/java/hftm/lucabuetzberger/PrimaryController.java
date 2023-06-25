@@ -1,13 +1,10 @@
 package hftm.lucabuetzberger;
 
 import java.io.IOException;
-
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
-import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -42,6 +39,8 @@ public class PrimaryController {
     private Button newBook;
     @FXML
     private Button editBook;
+    @FXML
+    private Button deleteBook;
 
     //Fields Movie
     @FXML
@@ -58,6 +57,12 @@ public class PrimaryController {
     private TableColumn<Movie, Integer> movieLengthColumn;
     @FXML
     private TableColumn<Movie, Integer> movieRatingColumn;
+    @FXML
+    private Button newMovie;
+    @FXML
+    private Button editMovie;
+    @FXML
+    private Button deleteMovie;
 
 
 
@@ -72,7 +77,7 @@ public class PrimaryController {
         this.bookRatingColumn.setCellValueFactory(cellData -> cellData.getValue().bookRatingProperty().asObject());
 
         this.bookTable.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> this.showBookDetails(newValue));
+                .addListener((observable, oldValue, newValue) -> this.getBookDetails(newValue));
         this.bookTable.setItems(App.getBookList());
 
         // Initializes the movie table and columns
@@ -100,7 +105,7 @@ public class PrimaryController {
     }
 
     //Book Methods
-    private void showBookDetails(Book book) {
+    private void getBookDetails(Book book) {
         if (book != null) {
             // Fill the labels with info from the book object.
             this.txtf_bookTitle.setText(book.getBookTitle());
@@ -116,6 +121,7 @@ public class PrimaryController {
             txtf_bookRating.setText("");
         }
     }
+
 //    Book Buttons
     @FXML
     private void newBook() {
@@ -126,27 +132,56 @@ public class PrimaryController {
         Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
         if (selectedBook != null){
             App.switchToBookEditView(selectedBook);
-            this.showBookDetails(selectedBook);
+            this.getBookDetails(selectedBook);
         } else {
             System.out.println("No book selected");
         }
     }
-
-
-//    @FXML
-//    public void onEdit() {
-//        Prisoner selectedPrisoner = prisonerTable.getSelectionModel().getSelectedItem();
-//        if (selectedPrisoner != null) {
-//            App.switchToEditView(selectedPrisoner);
-//            this.showPrisonerDetails(selectedPrisoner);
-//        } else {
-//            // Nothing selected.
-//            System.out.println("Nothing happened!");
-//        }
-
+    @FXML
+    private void deleteBook(){
+        Book selectedBook = bookTable.getSelectionModel().getSelectedItem();
+        if (selectedBook != null){
+            ObservableList<Book> bookList = App.getBookList();
+            bookTable.getItems().remove(selectedBook);
+            bookList.remove(selectedBook);
+            System.out.println("Books in bookList:");
+            for (Book book : bookList) {
+                System.out.println(book.getBookTitle()); // Print book title
+            }
+        } else{
+        }
+    }
 
     @FXML
+    private void newMovie(){
+        App.switchToNewMovieView();
+    }
+    @FXML
+    private void editMovie(){
+        Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+        if (selectedMovie != null){
+            App.switchToMovieEditView(selectedMovie);
+        } else {
+            System.out.println("No movie selected");
+        }
+    }
+
+    @FXML
+    private void deleteMovie(){
+        Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+        if (selectedMovie != null){
+            ObservableList<Movie> movieList = App.getMovieList();
+            movieTable.getItems().remove(selectedMovie);
+            movieList.remove(selectedMovie);
+            System.out.println("Movies in movieList:");
+            for (Movie movie : movieList) {
+                System.out.println(movie.getMovieTitle()); // Print book title
+            }
+        } else{
+        }
+    }
+    @FXML
     private void switchToSecondary() throws IOException {
-        App.switchToSecondary();
+        App.switchToSecondaryView();
     }
 }

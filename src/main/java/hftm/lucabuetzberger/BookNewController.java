@@ -89,11 +89,11 @@ public class BookNewController {
             this.book.setBookRating(Integer.parseInt(rating));
         }
         App.getBookList().add(book);
-        App.switchToPrimary();
+        App.switchToPrimaryView();
     }
 
     @FXML
     private void onCancel(){
-        App.switchToPrimary();
+        App.switchToPrimaryView();
     }
 }
