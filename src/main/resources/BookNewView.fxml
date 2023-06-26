@@ -29,7 +29,7 @@
             <Label text="Author" GridPane.rowIndex="1" />
             <Label text="Release Year" GridPane.rowIndex="2" />
             <Label text="Genre" GridPane.rowIndex="3" />
-            <Button fx:id="onSave" disable="true" mnemonicParsing="false" onAction="#onSave" text="Save" GridPane.rowIndex="6" />
+            <Button fx:id="onSave" mnemonicParsing="false" onAction="#onSave" text="Save" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#onCancel" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="txtf_bookTitle" GridPane.columnIndex="1" />
             <TextField fx:id="txtf_bookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />

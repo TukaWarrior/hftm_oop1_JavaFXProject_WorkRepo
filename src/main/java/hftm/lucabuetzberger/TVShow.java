@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TVShow {
+
+    //Fields
     private SimpleStringProperty tvshowTitle = new SimpleStringProperty();
     private SimpleStringProperty tvshowDirector = new SimpleStringProperty();
     private SimpleIntegerProperty tvshowReleaseYear = new SimpleIntegerProperty();
@@ -14,7 +16,6 @@ public class TVShow {
     //Constructor
     public TVShow(){
     }
-
     public TVShow(String tvshowTitle, String tvshowDirector, int tvshowReleaseYear, String tvshowGenre, int tvshowEpisodes, int tvshowRating){
         this.setTVShowTitle(tvshowTitle);
         this.setTVShowDirector(tvshowDirector);
@@ -24,7 +25,7 @@ public class TVShow {
         this.setTVShowRating(tvshowRating);
     }
 
-    // TVShow Title
+    //TVShow Title
     public SimpleStringProperty tvshowTitleProperty(){
         return this.tvshowTitle;
     }
@@ -35,7 +36,7 @@ public class TVShow {
         this.tvshowTitle.set(tvShowTitle);
     }
 
-    // TVShow Director
+    //TVShow Director
     public SimpleStringProperty tvshowDirectorProperty(){
         return this.tvshowDirector;
     }
@@ -46,7 +47,7 @@ public class TVShow {
         this.tvshowDirector.set(tvShowDirector);
     }
 
-    // TVShow ReleaseYear
+    //TVShow ReleaseYear
     public SimpleIntegerProperty tvshowReleaseYearProperty(){
         return this.tvshowReleaseYear;
     }
@@ -57,7 +58,7 @@ public class TVShow {
         this.tvshowReleaseYear.set(tvShowReleaseYear);
     }
 
-    // TVShow Genre
+    //TVShow Genre
     public SimpleStringProperty tvshowGenreProperty(){
         return this.tvshowGenre;
     }
@@ -68,7 +69,7 @@ public class TVShow {
         this.tvshowGenre.set(tvShowGenre);
     }
 
-    // TVShow Length
+    //TVShow Length
     public SimpleIntegerProperty tvshowEpisodesProperty(){
         return this.tvshowEpisodes;
     }
@@ -79,7 +80,7 @@ public class TVShow {
         this.tvshowEpisodes.set(tvShowEpisodes);
     }
 
-    // TVShow Rating
+    //TVShow Rating
     public SimpleIntegerProperty tvshowRatingProperty(){
         return this.tvshowRating;
     }
@@ -88,5 +89,17 @@ public class TVShow {
     }
     public void setTVShowRating(Integer tvShowRating){
         this.tvshowRating.set(tvShowRating);
+    }
+
+    //All TVShow attributes (for sorting function)
+    public String getTVShowAttributes() {
+        StringBuilder attributes = new StringBuilder();
+        attributes.append(tvshowTitle.get()).append(" ");
+        attributes.append(tvshowDirector.get()).append(" ");
+        attributes.append(tvshowReleaseYear.get()).append(" ");
+        attributes.append(tvshowGenre.get()).append(" ");
+        attributes.append(tvshowEpisodes.get()).append(" ");
+        attributes.append(tvshowRating.get());
+        return attributes.toString().toLowerCase();
     }
 }

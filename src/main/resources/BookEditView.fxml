@@ -30,10 +30,10 @@
             <Label text="Author" GridPane.rowIndex="1" />
             <Label text="Pages" GridPane.rowIndex="4" />
             <Label text="Rating" GridPane.rowIndex="5" />
-            <TextField fx:id="txtf_bookTitle" promptText="Enter book title" GridPane.columnIndex="1" />
-            <TextField fx:id="txtf_bookAuthor" promptText="Enter authors name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtf_bookPages" promptText="Enter number of pages" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="txtf_bookRating" promptText="Enter personal rating" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtf_bookTitle" GridPane.columnIndex="1" />
+            <TextField fx:id="txtf_bookAuthor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtf_bookPages" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtf_bookRating" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Button fx:id="onCancel" mnemonicParsing="false" onAction="#onCancel" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button fx:id="onSave" mnemonicParsing="false" onAction="#onSave" text="Save" GridPane.rowIndex="6" />
             <Label text="Release Year" GridPane.rowIndex="2" />

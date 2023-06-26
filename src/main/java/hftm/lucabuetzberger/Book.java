@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Book {
+
+    //Fields
     private SimpleStringProperty bookTitle = new SimpleStringProperty();
     private SimpleStringProperty bookAuthor = new SimpleStringProperty();
     private SimpleIntegerProperty bookReleaseYear = new SimpleIntegerProperty();
@@ -87,5 +89,17 @@ public class Book {
     }
     public void setBookRating(Integer bookRating){
         this.bookRating.set(bookRating);
+    }
+
+    //All Book Attributes (for sorting function)
+    public String getBookAttributes() {
+        StringBuilder attributes = new StringBuilder();
+        attributes.append(bookTitle.get()).append(" ");
+        attributes.append(bookAuthor.get()).append(" ");
+        attributes.append(bookReleaseYear.get()).append(" ");
+        attributes.append(bookGenre.get()).append(" ");
+        attributes.append(bookPages.get()).append(" ");
+        attributes.append(bookRating.get());
+        return attributes.toString().toLowerCase();
     }
 }

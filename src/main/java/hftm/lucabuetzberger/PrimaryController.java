@@ -1,15 +1,34 @@
 package hftm.lucabuetzberger;
 
 import java.io.IOException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 
 public class PrimaryController {
-    
+
+    @FXML
+    private TextField txtf_bookFilter;
+    @FXML
+    private ComboBox<String> comboBox_bookFilterAttributes;
+    @FXML
+    private TextField txtf_movieFilter;
+    @FXML
+    private ComboBox<String> comboBox_movieFilterAttributes;
+    @FXML
+    private TextField txtf_gameFilter;
+    @FXML
+    private ComboBox<String> comboBox_gameFilterAttributes;
+    @FXML
+    private TextField txtf_tvshowFilter;
+    @FXML
+    private ComboBox<String> comboBox_tvshowFilterAttributes;
+
     //Fields Books
     @FXML
     private TableView<Book> bookTable;
@@ -169,6 +188,50 @@ public class PrimaryController {
                 editBook.setDisable(true);
             }
         });
+
+        //Book Filter
+        // Populate the filterComboBox
+        comboBox_bookFilterAttributes.getItems().addAll("All Attributes", "Title", "Author", "Release Year", "Genre", "Pages", "Rating");
+        // Set the default selection
+        comboBox_bookFilterAttributes.setValue("All Attributes");
+        // Add listeners to both txtf_bookFilter and filterComboBox
+        txtf_bookFilter.textProperty().addListener((observable, oldValue, newValue) -> filterBookList());
+        comboBox_bookFilterAttributes.valueProperty().addListener((observable, oldValue, newValue) -> filterBookList());
+        // Set initial values
+        bookTable.setItems(App.getBookList());
+
+        //Movie Filter
+        // Populate the filterComboBox
+        comboBox_movieFilterAttributes.getItems().addAll("All Attributes", "Title", "Director", "Release Year", "Genre", "Length", "Rating");
+        // Set the default selection
+        comboBox_movieFilterAttributes.setValue("All Attributes");
+        // Add listeners to both txtf_bookFilter and filterComboBox
+        txtf_movieFilter.textProperty().addListener((observable, oldValue, newValue) -> filterMovieList());
+        comboBox_movieFilterAttributes.valueProperty().addListener((observable, oldValue, newValue) -> filterMovieList());
+        // Set initial values
+        movieTable.setItems(App.getMovieList());
+
+        //Game Filter
+        // Populate the filterComboBox
+        comboBox_gameFilterAttributes.getItems().addAll("All Attributes", "Title", "Developer", "Release Year", "Genre", "Playtime", "Rating");
+        // Set the default selection
+        comboBox_gameFilterAttributes.setValue("All Attributes");
+        // Add listeners to both txtf_bookFilter and filterComboBox
+        txtf_gameFilter.textProperty().addListener((observable, oldValue, newValue) -> filterGameList());
+        comboBox_gameFilterAttributes.valueProperty().addListener((observable, oldValue, newValue) -> filterGameList());
+        // Set initial values
+        gameTable.setItems(App.getGameList());
+
+        //TVShow Filter
+        // Populate the filterComboBox
+        comboBox_tvshowFilterAttributes.getItems().addAll("All Attributes", "Title", "Director", "Release Year", "Genre", "Episodes", "Rating");
+        // Set the default selection
+        comboBox_tvshowFilterAttributes.setValue("All Attributes");
+        // Add listeners to both txtf_bookFilter and filterComboBox
+        txtf_tvshowFilter.textProperty().addListener((observable, oldValue, newValue) -> filterTVShowList());
+        comboBox_tvshowFilterAttributes.valueProperty().addListener((observable, oldValue, newValue) -> filterTVShowList());
+        // Set initial values
+        tvshowTable.setItems(App.getTVShowList());
     }
 
     //Book Methods
@@ -219,6 +282,176 @@ public class PrimaryController {
             }
         } else{
         }
+    }
+
+    //Book Filter
+    @FXML
+    private void filterBookList() {
+        String filterText = txtf_bookFilter.getText().toLowerCase();
+        String selectedAttribute = comboBox_bookFilterAttributes.getValue();
+
+        // Clear the current selection in the table
+        bookTable.getSelectionModel().clearSelection();
+
+        // Clear the filter if the text field is empty or no attribute is selected
+        if (filterText.isEmpty() || selectedAttribute == null) {
+            bookTable.setItems(App.getBookList());
+            return;
+        }
+
+        ObservableList<Book> filteredList = FXCollections.observableArrayList();
+        for (Book book : App.getBookList()) {
+            String attributeValue = "";
+
+            // Determine the value of the selected attribute
+            if (selectedAttribute.equals("All Attributes")) {
+                attributeValue = book.getBookAttributes().toLowerCase();
+            } else if (selectedAttribute.equals("Title")) {
+                attributeValue = book.getBookTitle().toLowerCase();
+            } else if (selectedAttribute.equals("Author")) {
+                attributeValue = book.getBookAuthor().toLowerCase();
+            } else if (selectedAttribute.equals("Release Year")) {
+                attributeValue = String.valueOf(book.getBookReleaseYear());
+            } else if (selectedAttribute.equals("Genre")) {
+                attributeValue = book.getBookGenre().toLowerCase();
+            } else if (selectedAttribute.equals("Pages")) {
+                attributeValue = String.valueOf(book.getBookPages());
+            } else if (selectedAttribute.equals("Rating")) {
+                attributeValue = String.valueOf(book.getBookRating());
+            }
+            // Filter the list based on the selected attribute
+            if (attributeValue.contains(filterText)) {
+                filteredList.add(book);
+            }
+        }
+        bookTable.setItems(filteredList);
+    }
+
+    //Movie Filter
+    @FXML
+    private void filterMovieList() {
+        String filterText = txtf_movieFilter.getText().toLowerCase();
+        String selectedAttribute = comboBox_movieFilterAttributes.getValue();
+
+        // Clear the current selection in the table
+        movieTable.getSelectionModel().clearSelection();
+
+        // Clear the filter if the text field is empty or no attribute is selected
+        if (filterText.isEmpty() || selectedAttribute == null) {
+            movieTable.setItems(App.getMovieList());
+            return;
+        }
+
+        ObservableList<Movie> filteredList = FXCollections.observableArrayList();
+        for (Movie movie : App.getMovieList()) {
+            String attributeValue = "";
+
+            // Determine the value of the selected attribute
+            if (selectedAttribute.equals("All Attributes")) {
+                attributeValue = movie.getMovieAttributes().toLowerCase();
+            } else if (selectedAttribute.equals("Title")) {
+                attributeValue = movie.getMovieTitle().toLowerCase();
+            } else if (selectedAttribute.equals("Director")) {
+                attributeValue = movie.getMovieDirector().toLowerCase();
+            } else if (selectedAttribute.equals("Release Year")) {
+                attributeValue = String.valueOf(movie.getMovieReleaseYear());
+            } else if (selectedAttribute.equals("Genre")) {
+                attributeValue = movie.getMovieGenre().toLowerCase();
+            } else if (selectedAttribute.equals("Length")) {
+                attributeValue = String.valueOf(movie.getMovieLength());
+            } else if (selectedAttribute.equals("Rating")) {
+                attributeValue = String.valueOf(movie.getMovieRating());
+            }
+            // Filter the list based on the selected attribute
+            if (attributeValue.contains(filterText)) {
+                filteredList.add(movie);
+            }
+        }
+        movieTable.setItems(filteredList);
+    }
+
+    @FXML
+    private void filterGameList() {
+        String filterText = txtf_gameFilter.getText().toLowerCase();
+        String selectedAttribute = comboBox_gameFilterAttributes.getValue();
+
+        // Clear the current selection in the table
+        gameTable.getSelectionModel().clearSelection();
+
+        // Clear the filter if the text field is empty or no attribute is selected
+        if (filterText.isEmpty() || selectedAttribute == null) {
+            gameTable.setItems(App.getGameList());
+            return;
+        }
+
+        ObservableList<Game> filteredList = FXCollections.observableArrayList();
+        for (Game game : App.getGameList()) {
+            String attributeValue = "";
+
+            // Determine the value of the selected attribute
+            if (selectedAttribute.equals("All Attributes")) {
+                attributeValue = game.getGameAttributes().toLowerCase();
+            } else if (selectedAttribute.equals("Title")) {
+                attributeValue = game.getGameTitle().toLowerCase();
+            } else if (selectedAttribute.equals("Author")) {
+                attributeValue = game.getGameDeveloper().toLowerCase();
+            } else if (selectedAttribute.equals("Release Year")) {
+                attributeValue = String.valueOf(game.getGameReleaseYear());
+            } else if (selectedAttribute.equals("Genre")) {
+                attributeValue = game.getGameGenre().toLowerCase();
+            } else if (selectedAttribute.equals("Pages")) {
+                attributeValue = String.valueOf(game.getGamePlaytime());
+            } else if (selectedAttribute.equals("Rating")) {
+                attributeValue = String.valueOf(game.getGameRating());
+            }
+            // Filter the list based on the selected attribute
+            if (attributeValue.contains(filterText)) {
+                filteredList.add(game);
+            }
+        }
+        gameTable.setItems(filteredList);
+    }
+
+    @FXML
+    private void filterTVShowList() {
+        String filterText = txtf_tvshowFilter.getText().toLowerCase();
+        String selectedAttribute = comboBox_tvshowFilterAttributes.getValue();
+
+        // Clear the current selection in the table
+        tvshowTable.getSelectionModel().clearSelection();
+
+        // Clear the filter if the text field is empty or no attribute is selected
+        if (filterText.isEmpty() || selectedAttribute == null) {
+            tvshowTable.setItems(App.getTVShowList());
+            return;
+        }
+
+        ObservableList<TVShow> filteredList = FXCollections.observableArrayList();
+        for (TVShow tvshow : App.getTVShowList()) {
+            String attributeValue = "";
+
+            // Determine the value of the selected attribute
+            if (selectedAttribute.equals("All Attributes")) {
+                attributeValue = tvshow.getTVShowAttributes().toLowerCase();
+            } else if (selectedAttribute.equals("Title")) {
+                attributeValue = tvshow.getTVShowTitle().toLowerCase();
+            } else if (selectedAttribute.equals("Author")) {
+                attributeValue = tvshow.getTVShowDirector().toLowerCase();
+            } else if (selectedAttribute.equals("Release Year")) {
+                attributeValue = String.valueOf(tvshow.getTVShowReleaseYear());
+            } else if (selectedAttribute.equals("Genre")) {
+                attributeValue = tvshow.getTVShowGenre().toLowerCase();
+            } else if (selectedAttribute.equals("Pages")) {
+                attributeValue = String.valueOf(tvshow.getTVShowEpisodes());
+            } else if (selectedAttribute.equals("Rating")) {
+                attributeValue = String.valueOf(tvshow.getTVShowRating());
+            }
+            // Filter the list based on the selected attribute
+            if (attributeValue.contains(filterText)) {
+                filteredList.add(tvshow);
+            }
+        }
+        tvshowTable.setItems(filteredList);
     }
 
 //Movie Buttons

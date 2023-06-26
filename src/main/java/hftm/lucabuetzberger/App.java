@@ -63,7 +63,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
         App.scene = new Scene(loadFXML(fxmlLoader), 640, 480);
-        stage.setTitle("I have no life");
+        stage.setTitle("Entertainment Tracker");
         stage.setScene(scene);
         stage.show();
     }

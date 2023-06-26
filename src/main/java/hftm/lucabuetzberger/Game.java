@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Game {
+
+    //Fields
     private SimpleStringProperty gameTitle = new SimpleStringProperty();
     private SimpleStringProperty gameDeveloper = new SimpleStringProperty();
     private SimpleIntegerProperty gameReleaseYear = new SimpleIntegerProperty();
@@ -11,12 +13,9 @@ public class Game {
     private SimpleIntegerProperty gamePlaytime = new SimpleIntegerProperty();
     private SimpleIntegerProperty gameRating = new SimpleIntegerProperty();
 
-
-
     //Constructor
     public Game(){
     }
-
     public Game(String gameTitle, String gameDeveloper, int gameReleaseYear, String gameGenre, int gamePlaytime, int gameRating) {
         this.setGameTitle(gameTitle);
         this.setGameDeveloper(gameDeveloper);
@@ -26,7 +25,7 @@ public class Game {
         this.setGameRating(gameRating);
     }
 
-    // Game Title
+    //Game Title
     public SimpleStringProperty gameTitleProperty(){
         return this.gameTitle;
     }
@@ -37,7 +36,7 @@ public class Game {
         this.gameTitle.set(gameTitle);
     }
 
-    // Game Developer
+    //Game Developer
     public SimpleStringProperty gameDeveloperProperty(){
         return this.gameDeveloper;
     }
@@ -48,7 +47,7 @@ public class Game {
         this.gameDeveloper.set(gameDeveloper);
     }
 
-    // Game ReleaseYear
+    //Game ReleaseYear
     public SimpleIntegerProperty gameReleaseYearProperty(){
         return this.gameReleaseYear;
     }
@@ -59,7 +58,7 @@ public class Game {
         this.gameReleaseYear.set(gameReleaseYear);
     }
 
-    // Game Genre
+    //Game Genre
     public SimpleStringProperty gameGenreProperty(){
         return this.gameGenre;
     }
@@ -90,5 +89,17 @@ public class Game {
     }
     public void setGameRating(Integer gameRating){
         this.gameRating.set(gameRating);
+    }
+
+    //All Game attributes (for sorting function)
+    public String getGameAttributes() {
+        StringBuilder attributes = new StringBuilder();
+        attributes.append(gameTitle.get()).append(" ");
+        attributes.append(gameDeveloper.get()).append(" ");
+        attributes.append(gameReleaseYear.get()).append(" ");
+        attributes.append(gameGenre.get()).append(" ");
+        attributes.append(gamePlaytime.get()).append(" ");
+        attributes.append(gameRating.get());
+        return attributes.toString().toLowerCase();
     }
 }

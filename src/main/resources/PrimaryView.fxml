@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -43,6 +44,8 @@
                               <Button fx:id="editBook" disable="true" mnemonicParsing="false" onAction="#editBook" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <Button fx:id="newBook" mnemonicParsing="false" onAction="#newBook" text="New" GridPane.columnIndex="4" />
                               <Button fx:id="deleteBook" mnemonicParsing="false" onAction="#deleteBook" text="Delete" GridPane.columnIndex="3" />
+                              <TextField fx:id="txtf_bookFilter" onKeyReleased="#filterBookList" promptText="Search in Books" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="comboBox_bookFilterAttributes" prefWidth="150.0" promptText="Filter by category" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
@@ -84,7 +87,7 @@
                     <columns>
                       <TableColumn fx:id="bookTitleColumn" prefWidth="75.0" text="Title" />
                       <TableColumn fx:id="bookAuthorColumn" prefWidth="75.0" text="Author" />
-                        <TableColumn fx:id="bookReleaseYearColumn" prefWidth="75.0" text="ReleaseYear" />
+                        <TableColumn fx:id="bookReleaseYearColumn" prefWidth="75.0" text="Release Year" />
                         <TableColumn fx:id="bookGenreColumn" prefWidth="75.0" text="Genre" />
                         <TableColumn fx:id="bookPagesColumn" prefWidth="75.0" text="Pages" />
                         <TableColumn fx:id="bookRatingColumn" prefWidth="75.0" text="Rating" />
@@ -132,6 +135,8 @@
                         <Button fx:id="deleteMovie" mnemonicParsing="false" onAction="#deleteMovie" text="Delete" GridPane.columnIndex="3" />
                         <Button fx:id="newMovie" mnemonicParsing="false" onAction="#newMovie" text="New" GridPane.columnIndex="4" />
                         <Button fx:id="editMovie" mnemonicParsing="false" onAction="#editMovie" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtf_movieFilter" onKeyReleased="#filterMovieList" promptText="Search in Movies" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="comboBox_movieFilterAttributes" prefWidth="150.0" promptText="Filter by category" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </bottom>
@@ -176,6 +181,8 @@
                         <Button fx:id="newGame" mnemonicParsing="false" onAction="#newGame" text="New" GridPane.columnIndex="4" />
                         <Button fx:id="deleteGame" mnemonicParsing="false" onAction="#deleteGame" text="Delete" GridPane.columnIndex="3" />
                         <Button fx:id="editGame" mnemonicParsing="false" onAction="#editGame" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtf_gameFilter" onKeyReleased="#filterGameList" promptText="Search in Games" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="comboBox_gameFilterAttributes" prefWidth="150.0" promptText="Filter by category" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </bottom></BorderPane>
@@ -189,7 +196,7 @@
                     <columns>
                       <TableColumn fx:id="tvshowTitleColumn" prefWidth="75.0" text="Title" />
                       <TableColumn fx:id="tvshowDirectorColumn" prefWidth="75.0" text="Director" />
-                        <TableColumn fx:id="tvshowReleaseYearColumn" prefWidth="75.0" text="ReleaseYear" />
+                        <TableColumn fx:id="tvshowReleaseYearColumn" prefWidth="75.0" text="Release Year" />
                         <TableColumn fx:id="tvshowGenreColumn" prefWidth="75.0" text="Genre" />
                         <TableColumn fx:id="tvshowEpisodesColumn" prefWidth="75.0" text="Episodes" />
                         <TableColumn fx:id="tvshowRatingColumn" prefWidth="75.0" text="Rating" />
@@ -216,6 +223,8 @@
                         <Button fx:id="newTVShow" mnemonicParsing="false" onAction="#newTVShow" text="New" GridPane.columnIndex="4" />
                         <Button fx:id="editTVShow" mnemonicParsing="false" onAction="#editTVShow" text="Edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                         <Button fx:id="deleteTVShow" mnemonicParsing="false" onAction="#deleteTVShow" text="Delete" GridPane.columnIndex="3" />
+                        <TextField fx:id="txtf_tvshowFilter" onKeyReleased="#filterTVShowList" promptText="Search in TVShows" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="comboBox_tvshowFilterAttributes" prefWidth="150.0" promptText="Filter by category" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </bottom></BorderPane>

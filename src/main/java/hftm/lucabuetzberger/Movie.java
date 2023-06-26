@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Movie {
+
+    //Fields
     private SimpleStringProperty movieTitle = new SimpleStringProperty();
     private SimpleStringProperty movieDirector = new SimpleStringProperty();
     private SimpleIntegerProperty movieReleaseYear = new SimpleIntegerProperty();
@@ -12,7 +14,7 @@ public class Movie {
     private SimpleIntegerProperty movieRating = new SimpleIntegerProperty();
 
     //Constructor
-    public Movie(){
+    public Movie() {
     }
     public Movie(String movieTitle, String movieDirector, int movieReleaseYear, String movieGenre, int movieLength, int movieRating) {
         this.setMovieTitle(movieTitle);
@@ -24,68 +26,80 @@ public class Movie {
     }
 
     //Movie Title
-    public SimpleStringProperty movieTitleProperty(){
+    public SimpleStringProperty movieTitleProperty() {
         return this.movieTitle;
     }
-    public String getMovieTitle(){
+    public String getMovieTitle() {
         return this.movieTitle.get();
     }
-    public void setMovieTitle(String movieTitle){
+    public void setMovieTitle(String movieTitle) {
         this.movieTitle.set(movieTitle);
     }
 
     //Movie Director
-    public SimpleStringProperty movieDirectorProperty(){
+    public SimpleStringProperty movieDirectorProperty() {
         return this.movieDirector;
     }
-    public String getMovieDirector(){
+    public String getMovieDirector() {
         return this.movieDirector.get();
     }
-    public void setMovieDirector(String movieDirector){
+    public void setMovieDirector(String movieDirector) {
         this.movieDirector.set(movieDirector);
     }
 
     //Movie Release Year
-    public SimpleIntegerProperty movieReleaseYearProperty(){
+    public SimpleIntegerProperty movieReleaseYearProperty() {
         return this.movieReleaseYear;
     }
-    public Integer getMovieReleaseYear(){
+    public Integer getMovieReleaseYear() {
         return this.movieReleaseYear.get();
     }
-    public void setMovieReleaseYear(Integer movieReleaseYear){
+    public void setMovieReleaseYear(Integer movieReleaseYear) {
         this.movieReleaseYear.set(movieReleaseYear);
     }
 
     //Movie Genre
-    public SimpleStringProperty movieGenreProperty(){
+    public SimpleStringProperty movieGenreProperty() {
         return this.movieGenre;
     }
-    public String getMovieGenre(){
+    public String getMovieGenre() {
         return this.movieGenre.get();
     }
-    public void setMovieGenre(String movieGenre){
+    public void setMovieGenre(String movieGenre) {
         this.movieGenre.set(movieGenre);
     }
 
     //Movie Length
-    public SimpleIntegerProperty movieLengthProperty(){
+    public SimpleIntegerProperty movieLengthProperty() {
         return this.movieLength;
     }
-    public Integer getMovieLength(){
+    public Integer getMovieLength() {
         return this.movieLength.get();
     }
-    public void setMovieLength(Integer movieLength){
+    public void setMovieLength(Integer movieLength) {
         this.movieLength.set(movieLength);
     }
 
     //Movie Rating
-    public SimpleIntegerProperty movieRatingProperty(){
+    public SimpleIntegerProperty movieRatingProperty() {
         return this.movieRating;
     }
-    public Integer getMovieRating(){
+    public Integer getMovieRating() {
         return this.movieRating.get();
     }
-    public void setMovieRating(Integer movieRating){
+    public void setMovieRating(Integer movieRating) {
         this.movieRating.set(movieRating);
+    }
+
+    //All Movie attributes (for sorting function)
+    public String getMovieAttributes() {
+        StringBuilder attributes = new StringBuilder();
+        attributes.append(movieTitle.get()).append(" ");
+        attributes.append(movieDirector.get()).append(" ");
+        attributes.append(movieReleaseYear.get()).append(" ");
+        attributes.append(movieGenre.get()).append(" ");
+        attributes.append(movieLength.get()).append(" ");
+        attributes.append(movieRating.get());
+        return attributes.toString().toLowerCase();
     }
 }
