@@ -5,15 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Movie {
 
-    //Fields
+    //region Fields
     private SimpleStringProperty movieTitle = new SimpleStringProperty();
     private SimpleStringProperty movieDirector = new SimpleStringProperty();
     private SimpleIntegerProperty movieReleaseYear = new SimpleIntegerProperty();
     private SimpleStringProperty movieGenre = new SimpleStringProperty();
     private SimpleIntegerProperty movieLength = new SimpleIntegerProperty();
     private SimpleIntegerProperty movieRating = new SimpleIntegerProperty();
+    //endregion
 
-    //Constructor
+    //region Constructors
     public Movie() {
     }
     public Movie(String movieTitle, String movieDirector, int movieReleaseYear, String movieGenre, int movieLength, int movieRating) {
@@ -24,8 +25,9 @@ public class Movie {
         this.setMovieLength(movieLength);
         this.setMovieRating(movieRating);
     }
+    //endregion
 
-    //Movie Title
+    //region Attribute Movie Title
     public SimpleStringProperty movieTitleProperty() {
         return this.movieTitle;
     }
@@ -35,8 +37,9 @@ public class Movie {
     public void setMovieTitle(String movieTitle) {
         this.movieTitle.set(movieTitle);
     }
+    //endregion
 
-    //Movie Director
+    //region Attribute Movie Director
     public SimpleStringProperty movieDirectorProperty() {
         return this.movieDirector;
     }
@@ -46,8 +49,9 @@ public class Movie {
     public void setMovieDirector(String movieDirector) {
         this.movieDirector.set(movieDirector);
     }
+    //endregion
 
-    //Movie Release Year
+    //region Attribute Movie Release Year
     public SimpleIntegerProperty movieReleaseYearProperty() {
         return this.movieReleaseYear;
     }
@@ -57,8 +61,9 @@ public class Movie {
     public void setMovieReleaseYear(Integer movieReleaseYear) {
         this.movieReleaseYear.set(movieReleaseYear);
     }
+    //endregion
 
-    //Movie Genre
+    //region Attribute Movie Genre
     public SimpleStringProperty movieGenreProperty() {
         return this.movieGenre;
     }
@@ -68,8 +73,9 @@ public class Movie {
     public void setMovieGenre(String movieGenre) {
         this.movieGenre.set(movieGenre);
     }
+    //endregion
 
-    //Movie Length
+    //region Attribute Movie Length
     public SimpleIntegerProperty movieLengthProperty() {
         return this.movieLength;
     }
@@ -79,8 +85,9 @@ public class Movie {
     public void setMovieLength(Integer movieLength) {
         this.movieLength.set(movieLength);
     }
+    //endregion
 
-    //Movie Rating
+    //region Attribute Movie Rating
     public SimpleIntegerProperty movieRatingProperty() {
         return this.movieRating;
     }
@@ -90,8 +97,9 @@ public class Movie {
     public void setMovieRating(Integer movieRating) {
         this.movieRating.set(movieRating);
     }
+    //endregion
 
-    //All Movie attributes (for sorting function)
+    //region All Movie attributes (for sorting function)
     public String getMovieAttributes() {
         StringBuilder attributes = new StringBuilder();
         attributes.append(movieTitle.get()).append(" ");
@@ -102,4 +110,5 @@ public class Movie {
         attributes.append(movieRating.get());
         return attributes.toString().toLowerCase();
     }
+    //endregion
 }

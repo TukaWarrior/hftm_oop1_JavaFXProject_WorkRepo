@@ -6,6 +6,12 @@ import javafx.scene.control.TextField;
 import java.time.Year;
 
 public class TVShowEditController {
+
+    //region Fields
+    private TVShow tvshows;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_tvshowTitle;
     @FXML
@@ -18,11 +24,13 @@ public class TVShowEditController {
     private TextField txtf_tvshowEpisodes;
     @FXML
     private TextField txtf_tvshowRating;
-    private TVShow tvshows;
+    //endregion
 
     @FXML
     private void initialize() {
-//         Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_tvshowEpisodes
+        //Checks if any letters are entered and replaces them
         txtf_tvshowEpisodes.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowEpisodes.setText(newValue.replaceAll("[^\\d]", ""));
@@ -33,8 +41,10 @@ public class TVShowEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_tvshowReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_tvshowReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -45,8 +55,10 @@ public class TVShowEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_tvshowRating
+        //Checks if any letters are entered and replaces them
         txtf_tvshowRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -57,11 +69,13 @@ public class TVShowEditController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Populate TextFields
     public void setTVShow(TVShow tvshow) {
         this.tvshows = tvshow;
-//        Fills the text fields with the selected instance
+        //Fills the text fields with the selected instance
         txtf_tvshowTitle.setText(tvshow.getTVShowTitle());
         txtf_tvshowDirector.setText(tvshow.getTVShowDirector());
         txtf_tvshowReleaseYear.setText(String.valueOf(tvshow.getTVShowReleaseYear()));
@@ -69,7 +83,9 @@ public class TVShowEditController {
         txtf_tvshowEpisodes.setText(String.valueOf(tvshow.getTVShowEpisodes()));
         txtf_tvshowRating.setText(String.valueOf(tvshow.getTVShowRating()));
     }
+    //endregion
 
+    //region Button: Save
     @FXML
     private void onSave() {
         String title = txtf_tvshowTitle.getText();
@@ -99,9 +115,12 @@ public class TVShowEditController {
         }
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel() {
         App.switchToPrimaryView();
     }
+    //endregion
 }

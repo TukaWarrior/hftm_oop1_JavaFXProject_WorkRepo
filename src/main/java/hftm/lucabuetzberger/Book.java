@@ -5,15 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Book {
 
-    //Fields
+    //region Fields
     private SimpleStringProperty bookTitle = new SimpleStringProperty();
     private SimpleStringProperty bookAuthor = new SimpleStringProperty();
     private SimpleIntegerProperty bookReleaseYear = new SimpleIntegerProperty();
     private SimpleStringProperty bookGenre = new SimpleStringProperty();
     private SimpleIntegerProperty bookPages = new SimpleIntegerProperty();
     private SimpleIntegerProperty bookRating = new SimpleIntegerProperty();
+    //endregion
 
-    //Constructor
+    //region Constructors
     public Book(){
     }
     public Book(String bookTitle, String bookAuthor, int bookReleaseYear, String bookGenre, int bookPages, int bookRating){
@@ -24,8 +25,9 @@ public class Book {
         this.setBookPages(bookPages);
         this.setBookRating(bookRating);
     }
+    //endregion
 
-    //Book Title
+    //region Attribute Book Title
     public SimpleStringProperty bookTitleProperty(){
         return this.bookTitle;
     }
@@ -35,8 +37,9 @@ public class Book {
     public void setBookTitle(String bookTitle){
         this.bookTitle.set(bookTitle);
     }
+    //endregion
 
-    //Book Author
+    //region Attribute Book Author
     public SimpleStringProperty bookAuthorProperty(){
         return this.bookAuthor;
     }
@@ -46,8 +49,9 @@ public class Book {
     public void setBookAuthor(String bookAuthor){
         this.bookAuthor.set(bookAuthor);
     }
+    //endregion
 
-    //Book Release Year
+    //region Attribute Book Release Year
     public SimpleIntegerProperty bookReleaseYearProperty(){
         return this.bookReleaseYear;
     }
@@ -57,8 +61,9 @@ public class Book {
     public void setBookReleaseYear(Integer bookReleaseYear){
         this.bookReleaseYear.set(bookReleaseYear);
     }
+    //endregion
 
-    //Book Genre
+    //region Attribute Book Genre
     public SimpleStringProperty bookGenreProperty(){
         return this.bookGenre;
     }
@@ -68,8 +73,9 @@ public class Book {
     public void setBookGenre(String bookGenre){
         this.bookGenre.set(bookGenre);
     }
+    //endregion
 
-    //Book Pages
+    //region Attribute Book Pages
     public SimpleIntegerProperty bookPagesProperty(){
     return this.bookPages;
     }
@@ -79,8 +85,9 @@ public class Book {
     public void setBookPages(Integer bookPages){
         this.bookPages.set(bookPages);
     }
+    //endregion
 
-    //Book Rating
+    //region Attribute Book Rating
     public SimpleIntegerProperty bookRatingProperty(){
     return this.bookRating;
     }
@@ -90,8 +97,9 @@ public class Book {
     public void setBookRating(Integer bookRating){
         this.bookRating.set(bookRating);
     }
+    //endregion
 
-    //All Book Attributes (for sorting function)
+    //region All Book Attributes (for sorting function)
     public String getBookAttributes() {
         StringBuilder attributes = new StringBuilder();
         attributes.append(bookTitle.get()).append(" ");
@@ -102,4 +110,5 @@ public class Book {
         attributes.append(bookRating.get());
         return attributes.toString().toLowerCase();
     }
+    //endregion
 }

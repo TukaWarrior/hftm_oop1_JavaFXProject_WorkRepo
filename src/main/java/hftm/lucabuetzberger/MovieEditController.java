@@ -5,6 +5,12 @@ import javafx.scene.control.TextField;
 import java.time.Year;
 
 public class MovieEditController {
+
+    //region Fields
+    private Movie movie;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_movieTitle;
     @FXML
@@ -17,11 +23,13 @@ public class MovieEditController {
     private TextField txtf_movieLength;
     @FXML
     private TextField txtf_movieRating;
-    private Movie movie;
+    //endregion
 
     @FXML
     private void initialize() {
-//         Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_movieLength
+        //Checks if any letters are entered and replaces them
         txtf_movieLength.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieLength.setText(newValue.replaceAll("[^\\d]", ""));
@@ -32,8 +40,10 @@ public class MovieEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_movieReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_movieReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -44,8 +54,10 @@ public class MovieEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_movieRating
+        //Checks if any letters are entered and replaces them
         txtf_movieRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -56,11 +68,13 @@ public class MovieEditController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Populate TextFields
     public void setMovie(Movie movie) {
         this.movie = movie;
-//        Fills the text fields with the selected instance
+        //Fills the text fields with the selected instance
         txtf_movieTitle.setText(movie.getMovieTitle());
         txtf_movieDirector.setText(movie.getMovieDirector());
         txtf_movieReleaseYear.setText(String.valueOf(movie.getMovieReleaseYear()));
@@ -68,7 +82,9 @@ public class MovieEditController {
         txtf_movieLength.setText(String.valueOf(movie.getMovieLength()));
         txtf_movieRating.setText(String.valueOf(movie.getMovieRating()));
     }
+    //endregion
 
+    //region Button: Save
     @FXML
     private void onSave() {
         String title = txtf_movieTitle.getText();
@@ -98,9 +114,12 @@ public class MovieEditController {
         }
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel() {
         App.switchToPrimaryView();
     }
+    //endregion
 }

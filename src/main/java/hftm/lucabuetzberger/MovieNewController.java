@@ -7,8 +7,11 @@ import java.time.Year;
 
 public class MovieNewController {
 
-    //Fields
+    //region Fields
     private Movie movie;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_movieTitle;
     @FXML
@@ -21,10 +24,13 @@ public class MovieNewController {
     private TextField txtf_movieLength;
     @FXML
     private TextField txtf_movieRating;
+    //endregion
 
     @FXML
     private void initialize() {
-        // Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_movieLength
+        //Checks if any letters are entered and replaces them
         txtf_movieLength.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieLength.setText(newValue.replaceAll("[^\\d]", ""));
@@ -35,8 +41,10 @@ public class MovieNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_movieReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_movieReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -47,8 +55,10 @@ public class MovieNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_movieRating
+        //Checks if any letters are entered and replaces them
         txtf_movieRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_movieRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -59,8 +69,10 @@ public class MovieNewController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Button: Save
     @FXML
     private void onSave() {
         this.movie = new Movie();
@@ -92,9 +104,12 @@ public class MovieNewController {
         App.getMovieList().add(movie);
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel(){
         App.switchToPrimaryView();
     }
+    //endregion
 }

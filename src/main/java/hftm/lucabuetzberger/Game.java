@@ -5,15 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Game {
 
-    //Fields
+    //region Fields
     private SimpleStringProperty gameTitle = new SimpleStringProperty();
     private SimpleStringProperty gameDeveloper = new SimpleStringProperty();
     private SimpleIntegerProperty gameReleaseYear = new SimpleIntegerProperty();
     private SimpleStringProperty gameGenre = new SimpleStringProperty();
     private SimpleIntegerProperty gamePlaytime = new SimpleIntegerProperty();
     private SimpleIntegerProperty gameRating = new SimpleIntegerProperty();
+    //endregion
 
-    //Constructor
+    //region Constructors
     public Game(){
     }
     public Game(String gameTitle, String gameDeveloper, int gameReleaseYear, String gameGenre, int gamePlaytime, int gameRating) {
@@ -24,8 +25,9 @@ public class Game {
         this.setGamePlaytime(gamePlaytime);
         this.setGameRating(gameRating);
     }
+    //endregions
 
-    //Game Title
+    //region Attribute Game Title
     public SimpleStringProperty gameTitleProperty(){
         return this.gameTitle;
     }
@@ -35,8 +37,9 @@ public class Game {
     public void setGameTitle(String gameTitle){
         this.gameTitle.set(gameTitle);
     }
+    //endregion
 
-    //Game Developer
+    //region Attribute Game Developer
     public SimpleStringProperty gameDeveloperProperty(){
         return this.gameDeveloper;
     }
@@ -46,8 +49,9 @@ public class Game {
     public void setGameDeveloper(String gameDeveloper){
         this.gameDeveloper.set(gameDeveloper);
     }
+    //endregion
 
-    //Game ReleaseYear
+    //region Attribute Game ReleaseYear
     public SimpleIntegerProperty gameReleaseYearProperty(){
         return this.gameReleaseYear;
     }
@@ -57,8 +61,9 @@ public class Game {
     public void setGameReleaseYear(Integer gameReleaseYear){
         this.gameReleaseYear.set(gameReleaseYear);
     }
+    //endregion
 
-    //Game Genre
+    //region Attribute Game Genre
     public SimpleStringProperty gameGenreProperty(){
         return this.gameGenre;
     }
@@ -68,8 +73,9 @@ public class Game {
     public void setGameGenre(String gameGenre){
         this.gameGenre.set(gameGenre);
     }
+    //endregion
 
-    //Game Playtime
+    //region Attribute Game Playtime
     public SimpleIntegerProperty gamePlaytimeProperty(){
         return this.gamePlaytime;
     }
@@ -79,8 +85,9 @@ public class Game {
     public void setGamePlaytime(Integer gamePlaytime){
         this.gamePlaytime.set(gamePlaytime);
     }
+    //endregion
 
-    //Game Rating
+    //region Attribute Game Rating
     public SimpleIntegerProperty gameRatingProperty(){
         return this.gameRating;
     }
@@ -90,8 +97,9 @@ public class Game {
     public void setGameRating(Integer gameRating){
         this.gameRating.set(gameRating);
     }
+    //endregion
 
-    //All Game attributes (for sorting function)
+    //region All Game attributes (for sorting function)
     public String getGameAttributes() {
         StringBuilder attributes = new StringBuilder();
         attributes.append(gameTitle.get()).append(" ");
@@ -102,4 +110,5 @@ public class Game {
         attributes.append(gameRating.get());
         return attributes.toString().toLowerCase();
     }
+    //endregion
 }

@@ -5,15 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class TVShow {
 
-    //Fields
+    //region Fields
     private SimpleStringProperty tvshowTitle = new SimpleStringProperty();
     private SimpleStringProperty tvshowDirector = new SimpleStringProperty();
     private SimpleIntegerProperty tvshowReleaseYear = new SimpleIntegerProperty();
     private SimpleStringProperty tvshowGenre = new SimpleStringProperty();
     private SimpleIntegerProperty tvshowEpisodes = new SimpleIntegerProperty();
     private SimpleIntegerProperty tvshowRating = new SimpleIntegerProperty();
+    //endregion
 
-    //Constructor
+    //region Constructors
     public TVShow(){
     }
     public TVShow(String tvshowTitle, String tvshowDirector, int tvshowReleaseYear, String tvshowGenre, int tvshowEpisodes, int tvshowRating){
@@ -24,8 +25,9 @@ public class TVShow {
         this.setTVShowEpisodes(tvshowEpisodes);
         this.setTVShowRating(tvshowRating);
     }
+    //endregion
 
-    //TVShow Title
+    //region Attribute TVShow Title
     public SimpleStringProperty tvshowTitleProperty(){
         return this.tvshowTitle;
     }
@@ -35,8 +37,9 @@ public class TVShow {
     public void setTVShowTitle(String tvShowTitle){
         this.tvshowTitle.set(tvShowTitle);
     }
+    //endregion
 
-    //TVShow Director
+    //region Attribute TVShow Director
     public SimpleStringProperty tvshowDirectorProperty(){
         return this.tvshowDirector;
     }
@@ -46,8 +49,9 @@ public class TVShow {
     public void setTVShowDirector(String tvShowDirector){
         this.tvshowDirector.set(tvShowDirector);
     }
+    //endregion
 
-    //TVShow ReleaseYear
+    //region Attribute TVShow ReleaseYear
     public SimpleIntegerProperty tvshowReleaseYearProperty(){
         return this.tvshowReleaseYear;
     }
@@ -57,8 +61,9 @@ public class TVShow {
     public void setTVShowReleaseYear(Integer tvShowReleaseYear){
         this.tvshowReleaseYear.set(tvShowReleaseYear);
     }
+    //endregion
 
-    //TVShow Genre
+    //region Attribute TVShow Genre
     public SimpleStringProperty tvshowGenreProperty(){
         return this.tvshowGenre;
     }
@@ -68,8 +73,9 @@ public class TVShow {
     public void setTVShowGenre(String tvShowGenre){
         this.tvshowGenre.set(tvShowGenre);
     }
+    //endregion
 
-    //TVShow Length
+    //region Attribute TVShow Length
     public SimpleIntegerProperty tvshowEpisodesProperty(){
         return this.tvshowEpisodes;
     }
@@ -79,8 +85,9 @@ public class TVShow {
     public void setTVShowEpisodes(Integer tvShowEpisodes){
         this.tvshowEpisodes.set(tvShowEpisodes);
     }
+    //endregion
 
-    //TVShow Rating
+    //region Attribute TVShow Rating
     public SimpleIntegerProperty tvshowRatingProperty(){
         return this.tvshowRating;
     }
@@ -90,8 +97,9 @@ public class TVShow {
     public void setTVShowRating(Integer tvShowRating){
         this.tvshowRating.set(tvShowRating);
     }
+    //endregion
 
-    //All TVShow attributes (for sorting function)
+    //region All TVShow attributes (for sorting function)
     public String getTVShowAttributes() {
         StringBuilder attributes = new StringBuilder();
         attributes.append(tvshowTitle.get()).append(" ");
@@ -102,4 +110,5 @@ public class TVShow {
         attributes.append(tvshowRating.get());
         return attributes.toString().toLowerCase();
     }
+    //endregion
 }

@@ -5,6 +5,12 @@ import javafx.scene.control.TextField;
 import java.time.Year;
 
 public class BookEditController {
+
+    //region Fields
+    private Book book;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_bookTitle;
     @FXML
@@ -17,11 +23,14 @@ public class BookEditController {
     private TextField txtf_bookPages;
     @FXML
     private TextField txtf_bookRating;
-    private Book book;
+    //endregion
+
 
     @FXML
     private void initialize() {
-//         Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: bookPages
+        //Checks if any letters are entered and replaces them
         txtf_bookPages.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_bookPages.setText(newValue.replaceAll("[^\\d]", ""));
@@ -32,8 +41,10 @@ public class BookEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: bookReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_bookReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_bookReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -44,8 +55,10 @@ public class BookEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: bookRating
+        //Checks if any letters are entered and replaces them
         txtf_bookRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_bookRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -56,11 +69,13 @@ public class BookEditController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Populate TextFields
     public void setBook(Book book) {
         this.book = book;
-//        Fills the text fields with the selected instance
+        //Fills the text fields with the selected instance
         txtf_bookTitle.setText(book.getBookTitle());
         txtf_bookAuthor.setText(book.getBookAuthor());
         txtf_bookReleaseYear.setText(String.valueOf(book.getBookReleaseYear()));
@@ -68,7 +83,9 @@ public class BookEditController {
         txtf_bookPages.setText(String.valueOf(book.getBookPages()));
         txtf_bookRating.setText(String.valueOf(book.getBookRating()));
     }
+    //endregion
 
+    //region Button: Save
     @FXML
     private void onSave() {
         String title = txtf_bookTitle.getText();
@@ -98,9 +115,12 @@ public class BookEditController {
         }
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel() {
         App.switchToPrimaryView();
     }
+    //endregion
 }

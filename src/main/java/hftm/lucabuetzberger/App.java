@@ -9,11 +9,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-//JavaFX App
 public class App extends Application {
 
-
-//Observable List
+    //region Observable List
     private static ObservableList<Book> bookList = FXCollections.observableArrayList();
     public static ObservableList<Book> getBookList() {
         return bookList;
@@ -30,8 +28,9 @@ public class App extends Application {
     public static ObservableList<TVShow> getTVShowList() {
         return tvshowList;
     }
+    //endregion
 
-//Testing
+    //region Object Instances
     public App() {
         bookList.add(new Book("The Shining", "Steven King", 1998, "Horror", 447, 86));
         bookList.add(new Book("To Kill a Mockingbird", "Harper Lee", 1960, "Roman", 281, 95));
@@ -49,16 +48,17 @@ public class App extends Application {
         tvshowList.add(new TVShow("The Boys", "Eric Kripk", 2016, "Superhero", 24, 87));
         tvshowList.add(new TVShow("Final Space", "Olan Rogers", 2018, "Comedy", 36, 95));
     }
+    //endregion
 
-//Main Method
+    //region Main Method
     public static void main(String[] args) {
         launch();
     }
+    //endregion
 
-//FXML Initialize Scene
+    //region FXML Loader
     private static Scene scene;
 
-//FXML Scene Start
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
@@ -68,72 +68,11 @@ public class App extends Application {
         stage.show();
     }
 
-//FXML Scene Change
-
-    public static void switchToPrimaryView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToSecondaryView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("SecondaryView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToNewBookView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("BookNewView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToBookEditView(Book selectedBook) {
-        FXMLLoader fxmlLoader = createFXMLLoader("BookEditView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-        BookEditController controller = fxmlLoader.getController();
-        controller.setBook(selectedBook);
-    }
-
-    public static void switchToNewGameView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("GameNewView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToGameEditView(Game selectedGame) {
-        FXMLLoader fxmlLoader = createFXMLLoader("GameEditView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-        GameEditController controller = fxmlLoader.getController();
-        controller.setGame(selectedGame);
-    }
-
-    public static void switchToNewTVShowView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("TVShowNewView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToTVShowEditView(TVShow selectedTVShow) {
-        FXMLLoader fxmlLoader = createFXMLLoader("TVShowEditView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-        TVShowEditController controller = fxmlLoader.getController();
-        controller.setTVShow(selectedTVShow);
-    }
-
-    public static void switchToNewMovieView(){
-        FXMLLoader fxmlLoader = createFXMLLoader("MovieNewView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-    }
-
-    public static void switchToMovieEditView(Movie selectedMovie) {
-        FXMLLoader fxmlLoader = createFXMLLoader("MovieEditView.fxml");
-        App.scene.setRoot(loadFXML(fxmlLoader));
-        MovieEditController controller = fxmlLoader.getController();
-        controller.setMovie(selectedMovie);
-    }
-
-//FXML Loader
-    private static FXMLLoader createFXMLLoader(String fxml)  {
+    private static FXMLLoader createFXMLLoader(String fxml) {
         return new FXMLLoader(App.class.getResource("/" + fxml));
     }
 
-    private static Parent loadFXML(FXMLLoader fxmlLoader)  {
+    private static Parent loadFXML(FXMLLoader fxmlLoader) {
         try {
             return fxmlLoader.load();
         } catch (IOException e) {
@@ -142,4 +81,52 @@ public class App extends Application {
             return null;
         }
     }
+    //endregion
+
+    //region FXML Scene Change
+    public static void switchToPrimaryView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("PrimaryView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+    public static void switchToNewBookView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("BookNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+    public static void switchToBookEditView(Book selectedBook) {
+        FXMLLoader fxmlLoader = createFXMLLoader("BookEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        BookEditController controller = fxmlLoader.getController();
+        controller.setBook(selectedBook);
+    }
+    public static void switchToNewMovieView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("MovieNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+    public static void switchToMovieEditView(Movie selectedMovie) {
+        FXMLLoader fxmlLoader = createFXMLLoader("MovieEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        MovieEditController controller = fxmlLoader.getController();
+        controller.setMovie(selectedMovie);
+    }
+    public static void switchToNewGameView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("GameNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+    public static void switchToGameEditView(Game selectedGame) {
+        FXMLLoader fxmlLoader = createFXMLLoader("GameEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        GameEditController controller = fxmlLoader.getController();
+        controller.setGame(selectedGame);
+    }
+    public static void switchToNewTVShowView(){
+        FXMLLoader fxmlLoader = createFXMLLoader("TVShowNewView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+    }
+    public static void switchToTVShowEditView(TVShow selectedTVShow) {
+        FXMLLoader fxmlLoader = createFXMLLoader("TVShowEditView.fxml");
+        App.scene.setRoot(loadFXML(fxmlLoader));
+        TVShowEditController controller = fxmlLoader.getController();
+        controller.setTVShow(selectedTVShow);
+    }
+    //endregion
 }

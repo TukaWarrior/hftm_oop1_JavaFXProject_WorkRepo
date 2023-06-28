@@ -8,8 +8,11 @@ import java.time.Year;
 
 public class TVShowNewController {
 
-    //Fields
+    //region Fields
     private TVShow tvshow;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_tvshowTitle;
     @FXML
@@ -22,10 +25,13 @@ public class TVShowNewController {
     private TextField txtf_tvshowEpisodes;
     @FXML
     private TextField txtf_tvshowRating;
+    //endregion
 
     @FXML
     private void initialize() {
-        // Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_tvshowEpisodes
+        //Checks if any letters are entered and replaces them
         txtf_tvshowEpisodes.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowEpisodes.setText(newValue.replaceAll("[^\\d]", ""));
@@ -36,8 +42,10 @@ public class TVShowNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_tvshowReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_tvshowReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -48,8 +56,10 @@ public class TVShowNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_tvshowRating
+        //Checks if any letters are entered and replaces them
         txtf_tvshowRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_tvshowRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -60,8 +70,10 @@ public class TVShowNewController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Button: Save
     @FXML
     private void onSave() {
         this.tvshow = new TVShow();
@@ -93,9 +105,12 @@ public class TVShowNewController {
         App.getTVShowList().add(tvshow);
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel(){
         App.switchToPrimaryView();
     }
+    //endregion
 }

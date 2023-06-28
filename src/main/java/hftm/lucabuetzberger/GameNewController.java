@@ -7,8 +7,11 @@ import java.time.Year;
 
 public class GameNewController {
 
-//Fields
+    //region Fields
     private Game game;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_gameTitle;
     @FXML
@@ -21,10 +24,13 @@ public class GameNewController {
     private TextField txtf_gamePlaytime;
     @FXML
     private TextField txtf_gameRating;
+    //endregion
 
     @FXML
     private void initialize() {
-        // Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_gamePlaytime
+        //Checks if any letters are entered and replaces them
         txtf_gamePlaytime.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gamePlaytime.setText(newValue.replaceAll("[^\\d]", ""));
@@ -35,8 +41,10 @@ public class GameNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_gameReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_gameReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gameReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -47,8 +55,10 @@ public class GameNewController {
                 }
             }
         });
+        //endregion
 
-        // Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_gameRating
+        //Checks if any letters are entered and replaces them
         txtf_gameRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gameRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -59,8 +69,10 @@ public class GameNewController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Button: Save
     @FXML
     private void onSave() {
         this.game = new Game();
@@ -92,9 +104,12 @@ public class GameNewController {
         App.getGameList().add(game);
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel(){
         App.switchToPrimaryView();
     }
+    //endregion
 }

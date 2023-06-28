@@ -6,6 +6,12 @@ import javafx.scene.control.TextField;
 import java.time.Year;
 
 public class GameEditController {
+
+    //region Fields
+    private Game game;
+    //endregion
+
+    //region FXML Elements
     @FXML
     private TextField txtf_gameTitle;
     @FXML
@@ -18,11 +24,14 @@ public class GameEditController {
     private TextField txtf_gamePlaytime;
     @FXML
     private TextField txtf_gameRating;
-    private Game game;
+    //endregion
+
 
     @FXML
     private void initialize() {
-//         Checks if any letters are entered and replaces them
+
+        //region Text Input Constraints: txtf_gamePlaytime
+        //Checks if any letters are entered and replaces them
         txtf_gamePlaytime.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gamePlaytime.setText(newValue.replaceAll("[^\\d]", ""));
@@ -33,8 +42,10 @@ public class GameEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_gameReleaseYear
+        //Checks if any letters are entered and replaces them
         txtf_gameReleaseYear.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gameReleaseYear.setText(newValue.replaceAll("[^\\d]", ""));
@@ -45,8 +56,10 @@ public class GameEditController {
                 }
             }
         });
+        //endregion
 
-//         Checks if any letters are entered and replaces them
+        //region Text Input Constraints: txtf_gameRating
+        //Checks if any letters are entered and replaces them
         txtf_gameRating.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 txtf_gameRating.setText(newValue.replaceAll("[^\\d]", ""));
@@ -57,11 +70,13 @@ public class GameEditController {
                 }
             }
         });
+        //endregion
     }
 
+    //region Populate TextFields
     public void setGame(Game game) {
         this.game = game;
-//        Fills the text fields with the selected instance
+        //Fills the text fields with the selected instance
         txtf_gameTitle.setText(game.getGameTitle());
         txtf_gameDeveloper.setText(game.getGameDeveloper());
         txtf_gameReleaseYear.setText(String.valueOf(game.getGameReleaseYear()));
@@ -69,7 +84,9 @@ public class GameEditController {
         txtf_gamePlaytime.setText(String.valueOf(game.getGamePlaytime()));
         txtf_gameRating.setText(String.valueOf(game.getGameRating()));
     }
+    //endregion
 
+    //region Button: Save
     @FXML
     private void onSave() {
         String title = txtf_gameTitle.getText();
@@ -99,9 +116,12 @@ public class GameEditController {
         }
         App.switchToPrimaryView();
     }
+    //endregion
 
+    //region Button: Cancel
     @FXML
     private void onCancel() {
         App.switchToPrimaryView();
     }
+    //endregion
 }
